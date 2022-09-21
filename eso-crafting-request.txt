@@ -1,0 +1,164 @@
+----------------------------------------
+Materials cost
+Ancestor Silk   75
+Rubedo Leather  35
+Rubedite Ingot  20
+Sanded Ruby Ash 18
+Platinum Ounce  104
+
+Armor traits cost
+Quartz                  32
+Diamond                 57
+Sardonyx                21
+Almandine               33
+Emerald                 41
+Bllodstone              20
+Garnet                  30
+Sapphire                69
+Fortified Nirncrux      13994
+
+Weapon traits cost
+Chrysolite      ?
+Amethyst        223
+Ruby            202
+Jade            46
+Turquoise       40
+Carnelian       268
+Fire Opal       140
+Citrine         307
+Potent Nirncrux 73853
+
+Jewelry traits cost
+Zinc            310
+Antimony        368
+Cobalt          398
+Slaughterstone  15836
+Dibellium       9912
+Aurbic Amber    44325
+Titanium        5661
+Gilding Wax     17645
+Dawn-prism      34699
+
+Blacksmithing Tempers
+Honing Stone    31
+Dwarven Oil     42
+Grain Solvent   909
+Tempering Alloy 20843
+
+Clothing Tannins
+Hemming         30
+Embroidery      26
+Elegant Lining  643
+Dreugh Wax      35419
+
+Woodworking Resins
+Pitch   98
+Turpen  142
+Mastic  1849
+Rosin   5233
+
+Jewelry Plating
+Terne Plating           4203
+Iridum Plating          20729
+Zircon Plating          147998
+Chromium Plating        352887
+
+Quality tempers/tannins/resins needed
+White   0
+Green   1
+Blue    2
+Purple  4
+Gold    8
+
+Quality plating needed
+White   0
+Green   1
+Blue    2
+Purple  3
+Gold    4
+
+----------------------------------------
+Armor traits
+Sturdy (quartz) - Reduces the cost of Block.
+Impenetrable (diamond) - Increases Critical Resistance and this item takes 50% less durability damage.
+Reinforced (sardonyx) - Increases this item's Armor value.
+Well-fitted (almandine) - Reduces the cost of Roll Dodge and Sprint.
+Training (emerald) - Increase experience gained from kills.
+Infused (bloodstone) - Increases armor enchantment effect.
+Invigorating (garnet) - Increases Health, Magicka, and Stamina Recovery.
+Divines (sapphire) - Increases Mundus Stone effects.
+Nirnhoned (fortified nirncrux) - Increases Physical and Spell Resistance.
+
+----------------------------------------
+Weapon traits
+Powered (chrysolite) - Increases healing done.
+Charged (amethyst) - Increases chance to apply a status effect to your target.
+Precise (ruby) - Increases Weapon and Spell Critical.
+Infused (jade) - Increases enchantment effects.
+Defending (turquoise) - Increases physical and spell resistance.
+Training (carnelian) - Increases experience from kills.
+Sharpened (fire opal) - Increases your Physical and Spell Penetration.
+Decisive (citrine) - When you gain Ultimate you have a chance to gain 1 additional Ultimate.
+Ninrhoned (potent nirncrux)- Increases damage of this weapon.
+
+----------------------------------------
+Jewelry traits
+Robust (zinc) - Increases Maximum Stamina.
+Healthy (antimony) - Increases Maximum Health.
+Arcane (cobalt) - Increases Maximum Magicka.
+Bloothirsty (slaughterstone) - Increases Weapon and Spell Damage.
+Harmony (dibellium) - Increases damage, healing, resource restore, and damage shield strength of synergies you activate.
+Infused (aurbic amber) - Increases enchantment effects of this item.
+Protective (titanium) - Increases Physical and Spell Resistance.
+Swift (gilding wax) - Increases movement speed.
+Triune (dawn-prism) - Increases Maximum Magicka, Stamina, and Health.
+
+----------------------------------------
+Blacksmithing Armor CP 160 materials
+cuirass         150
+sabatons        130
+gauntlets       130
+helm            130
+greaves         140
+pauldron        130
+girdle          130
+
+----------------------------------------
+Blacksmithing Weapons CP 160 materials
+axe             110
+mace            110
+sword           110
+battle axe      140
+maul            140
+greatsword      140
+dagger          100
+
+----------------------------------------
+Clothier Armor CP 160 materials
+robe            150
+shirt           150
+legs            140
+arms            130
+feet            130
+shoulders       130
+head            130
+waist           130
+
+----------------------------------------
+Woodworking Armor CP 160 materials
+shield  160
+
+----------------------------------------
+Woodworking Weapons CP 160 materials
+bow             120
+inferno staff   120
+lightning staff 120
+ice staff       120
+healing staff   120
+
+----------------------------------------
+Jewelry CP 160 materials
+necklace        150
+ring            100
+
+
