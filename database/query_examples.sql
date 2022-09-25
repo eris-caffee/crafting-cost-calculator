@@ -34,3 +34,22 @@ where
 items.name = 'Jerkin'
 and traits.name = 'Infused';
 
+
+
+SELECT items.id, 
+       items.name, 
+       items.num_materials, 
+       items.material_id, 
+       materials.name AS material_name, 
+       items.item_type_id, 
+       item_types.name AS item_type_name, 
+       items.crafting_type_id, 
+       crafting_types.name AS crafting_type_name, 
+       items.armor_type_id, 
+       armor_types.name AS armor_type_name 
+FROM items 
+     INNER JOIN materials ON items.material_id = materials.id 
+     INNER JOIN item_types ON items.item_type_id = item_types.id 
+     LEFT JOIN armor_types ON items.armor_type_id = armor_types.id 
+     INNER JOIN crafting_types ON items.crafting_type_id = crafting_types.id 
+WHERE items.item_type_id = 1;

@@ -1,0 +1,6 @@
+*~
+\.#.*
+.python-version
+.*.swp
+.DS_Store
+__pycache__

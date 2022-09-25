@@ -1,5 +1,7 @@
--- DROP DATABASE IF EXISTS `crafting-cost-estimator`;
--- CREATE DATABASE 'crafting-cost-estimator';
+-- DROP DATABASE IF EXISTS `crafting_cost_estimator`;
+-- CREATE DATABASE 'crafting_-cost_estimator';
+
+USE `crafting_cost_estimator`;
 
 -- -----------------------------------------------------------------------------
 
