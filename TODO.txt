@@ -1,0 +1,4 @@
+- Add styles
+- Implement saving orders
+- Create cron to clean database of old orders
+- Learn react and create front end!

@@ -33,6 +33,15 @@ def crafting_types():
 def item_types():
     return craftApp.item_types()
 
+# Get all motifs
+@flaskApp.route( "/motifs" )
+def motifs():
+    return craftApp.motifs()
+
+@flaskApp.route( "/motif/<id_or_name>" )
+def motif( id_or_name=None ):
+    return craftApp.motif( id_or_name )
+
 # Get traits by item type id
 @flaskApp.route( "/traits/<int:item_type_id>" )
 def traits( item_type_id = None ):

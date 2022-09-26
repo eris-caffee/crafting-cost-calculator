@@ -72,6 +72,119 @@ INSERT INTO `materials` SET `id` = 57, `name` = 'Terne Plating';
 INSERT INTO `materials` SET `id` = 58, `name` = 'Iridium Plating';
 INSERT INTO `materials` SET `id` = 59, `name` = 'Zircon Plating';
 INSERT INTO `materials` SET `id` = 60, `name` = 'Chromium Plating';
+INSERT INTO `materials` SET `id` = 61, `name` = "Adamantite";
+INSERT INTO `materials` SET `id` = 62, `name` = "Obsidian";
+INSERT INTO `materials` SET `id` = 63, `name` = "Bone";
+INSERT INTO `materials` SET `id` = 64, `name` = "Corundum";
+INSERT INTO `materials` SET `id` = 65, `name` = "Molybdenum";
+INSERT INTO `materials` SET `id` = 66, `name` = "Starmetal";
+INSERT INTO `materials` SET `id` = 67, `name` = "Moonstone";
+INSERT INTO `materials` SET `id` = 68, `name` = "Manganese";
+INSERT INTO `materials` SET `id` = 69, `name` = "Flint";
+INSERT INTO `materials` SET `id` = 70, `name` = "Nickel";
+INSERT INTO `materials` SET `id` = 71, `name` = "Palladium";
+INSERT INTO `materials` SET `id` = 72, `name` = "Copper";
+INSERT INTO `materials` SET `id` = 73, `name` = "Argentum";
+INSERT INTO `materials` SET `id` = 74, `name` = "Daedra Heart";
+INSERT INTO `materials` SET `id` = 75, `name` = "Dwemer Frame";
+INSERT INTO `materials` SET `id` = 76, `name` = "Malachite";
+INSERT INTO `materials` SET `id` = 77, `name` = "Charcoal of Remorse";
+INSERT INTO `materials` SET `id` = 78, `name` = "Goldscale";
+INSERT INTO `materials` SET `id` = 79, `name` = "Laurel";
+INSERT INTO `materials` SET `id` = 80, `name` = "Ferrous Salts";
+INSERT INTO `materials` SET `id` = 81, `name` = "Cassiterite";
+INSERT INTO `materials` SET `id` = 82, `name` = "Auric Tusk";
+INSERT INTO `materials` SET `id` = 83, `name` = "Potash";
+INSERT INTO `materials` SET `id` = 84, `name` = "Rogue's Soot"; -- '
+INSERT INTO `materials` SET `id` = 85, `name` = "Eagle Feather";
+INSERT INTO `materials` SET `id` = 86, `name` = "Lion Fang";
+INSERT INTO `materials` SET `id` = 87, `name` = "Dragon Scute";
+INSERT INTO `materials` SET `id` = 88, `name` = "Ancient Sandstone";
+INSERT INTO `materials` SET `id` = 89, `name` = "Azure Plasm";
+INSERT INTO `materials` SET `id` = 90, `name` = "Boiled Carapace";
+INSERT INTO `materials` SET `id` = 91, `name` = "Wolfsbane Incense";
+INSERT INTO `materials` SET `id` = 92, `name` = "Polished Shilling";
+INSERT INTO `materials` SET `id` = 93, `name` = "Fine Chalk";
+INSERT INTO `materials` SET `id` = 94, `name` = "Tainted Blood";
+INSERT INTO `materials` SET `id` = 95, `name` = "Defiled Whiskers";
+INSERT INTO `materials` SET `id` = 96, `name` = "Black Beeswax";
+INSERT INTO `materials` SET `id` = 97, `name` = "Night Pumice";
+INSERT INTO `materials` SET `id` = 98, `name` = "Pristine Shroud";
+INSERT INTO `materials` SET `id` = 99, `name` = "Oxblood Fungus";
+INSERT INTO `materials` SET `id` = 100, `name` = "Pearl Sand";
+INSERT INTO `materials` SET `id` = 101, `name` = "Star Sapphire";
+INSERT INTO `materials` SET `id` = 102, `name` = "Amber Marble";
+INSERT INTO `materials` SET `id` = 103, `name` = "Grinstones";
+INSERT INTO `materials` SET `id` = 104, `name` = "Distilled Slowsilver";
+INSERT INTO `materials` SET `id` = 105, `name` = "Leviathan Scrimshaw";
+INSERT INTO `materials` SET `id` = 106, `name` = "Stalhrim Shard";
+INSERT INTO `materials` SET `id` = 107, `name` = "Volcanic Viridian";
+INSERT INTO `materials` SET `id` = 108, `name` = "Ash Canvas";
+INSERT INTO `materials` SET `id` = 109, `name` = "Lustrous Sphalerite";
+INSERT INTO `materials` SET `id` = 110, `name` = "Wrought Ferrofungus";
+INSERT INTO `materials` SET `id` = 111, `name` = "Polished Scarab Elytra";
+INSERT INTO `materials` SET `id` = 112, `name` = "Refined Bonemold Resin";
+INSERT INTO `materials` SET `id` = 113, `name` = "Base Game";
+INSERT INTO `materials` SET `id` = 114, `name` = "Bloodroot Flux";
+INSERT INTO `materials` SET `id` = 115, `name` = "Minotaur Bezoar";
+INSERT INTO `materials` SET `id` = 116, `name` = "Tempered Brass";
+INSERT INTO `materials` SET `id` = 117, `name` = "Tenebrous Cord";
+INSERT INTO `materials` SET `id` = 118, `name` = "Dragon Bone";
+INSERT INTO `materials` SET `id` = 119, `name` = "Infected Flesh";
+INSERT INTO `materials` SET `id` = 120, `name` = "Desecrated Grave Soil";
+INSERT INTO `materials` SET `id` = 121, `name` = "Vitrified Malondo";
+INSERT INTO `materials` SET `id` = 122, `name` = "Culanda Lacquer";
+INSERT INTO `materials` SET `id` = 123, `name` = "Warrior's Heart Ashes"; -- '
+INSERT INTO `materials` SET `id` = 124, `name` = "Sea Serpent Hide";
+INSERT INTO `materials` SET `id` = 125, `name` = "Bloodscent Dew";
+INSERT INTO `materials` SET `id` = 126, `name` = "Argent Pelts";
+INSERT INTO `materials` SET `id` = 127, `name` = "Gryphon Plumes";
+INSERT INTO `materials` SET `id` = 128, `name` = "Red Diamond Seals";
+INSERT INTO `materials` SET `id` = 129, `name` = "Crocodile Leather";
+INSERT INTO `materials` SET `id` = 130, `name` = "Hackwing Plumage";
+INSERT INTO `materials` SET `id` = 131, `name` = "Goblin-Cloth Scrap";
+INSERT INTO `materials` SET `id` = 132, `name` = "Auroran Dust";
+INSERT INTO `materials` SET `id` = 133, `name` = "Shimmering Sand";
+INSERT INTO `materials` SET `id` = 134, `name` = "Dragonthread";
+INSERT INTO `materials` SET `id` = 135, `name` = "Frost Embers";
+INSERT INTO `materials` SET `id` = 136, `name` = "Gilding Salts";
+INSERT INTO `materials` SET `id` = 137, `name` = "Oath Cord";
+INSERT INTO `materials` SET `id` = 138, `name` = "Sangiin's Blood"; -- '
+INSERT INTO `materials` SET `id` = 139, `name` = "Polished Rivets";
+INSERT INTO `materials` SET `id` = 140, `name` = "Carmine Shieldsilk";
+INSERT INTO `materials` SET `id` = 141, `name` = "Aeonstone Shard";
+INSERT INTO `materials` SET `id` = 142, `name` = "Fryse Willow";
+INSERT INTO `materials` SET `id` = 143, `name` = "Consecrated Myrrh";
+INSERT INTO `materials` SET `id` = 144, `name` = "Gloomspore Chitin";
+INSERT INTO `materials` SET `id` = 145, `name` = "Bat Oil";
+INSERT INTO `materials` SET `id` = 146, `name` = "Sea Snake Fang";
+INSERT INTO `materials` SET `id` = 147, `name` = "Etched Corundum";
+INSERT INTO `materials` SET `id` = 148, `name` = "Etched Manganese";
+INSERT INTO `materials` SET `id` = 149, `name` = "Etched Adamantite";
+INSERT INTO `materials` SET `id` = 150, `name` = "Thorn Sigil";
+INSERT INTO `materials` SET `id` = 151, `name` = "Viridian Phial";
+INSERT INTO `materials` SET `id` = 152, `name` = "Burnished Goldscale";
+INSERT INTO `materials` SET `id` = 153, `name` = "Etched Molybdenum";
+INSERT INTO `materials` SET `id` = 154, `name` = "Etched Bronze";
+INSERT INTO `materials` SET `id` = 155, `name` = "Umbral Droplet";
+INSERT INTO `materials` SET `id` = 156, `name` = "Arkthzand Sprocket";
+INSERT INTO `materials` SET `id` = 157. `name` = "Hawk Skull";
+INSERT INTO `materials` SET `id` = 158, `name` = "Etched Nickel";
+INSERT INTO `materials` SET `id` = 159, `name` = "Chokeberry Extract";
+INSERT INTO `materials` SET `id` = 160, `name` = "Fulgid Epidote";
+INSERT INTO `materials` SET `id` = 161, `name` = "Ivory Brigade Clasp";
+INSERT INTO `materials` SET `id` = 162, `name` = "Death-Hopper Vocal Sac";
+INSERT INTO `materials` SET `id` = 163, `name` = "Marshnettle Sprig";
+INSERT INTO `materials` SET `id` = 164, `name` = "Pristine Daedric Heart";
+INSERT INTO `materials` SET `id` = 165, `name` = "Filed Barbs";
+INSERT INTO `materials` SET `id` = 166, `name` = "Rose Engraving";
+INSERT INTO `materials` SET `id` = 167, `name` = "Blaze-Veined Prism";
+INSERT INTO `materials` SET `id` = 168, `name` = "Indigo Lucent";
+INSERT INTO `materials` SET `id` = 169, `name` = "Squid Ink";
+INSERT INTO `materials` SET `id` = 170, `name` = "Bone Pyre Ash";
+INSERT INTO `materials` SET `id` = 171, `name` = "Scalloped Frog-Metal";
+INSERT INTO `materials` SET `id` = 172, `name` = "Stendarr Stamp";
+INSERT INTO `materials` SET `id` = 173, `name` = "High Isle Filigree";
 
 -- -----------------------------------------------------------------------------
 
@@ -214,3 +327,209 @@ INSERT INTO `items` SET `id` = 35, `num_materials` = 160, `name` = 'Shield', `ma
 
 INSERT INTO `items` SET `id` = 36, `num_materials` = 150, `name` = 'Necklace', `material_id` = 5, `item_type_id` = 3, `crafting_type_id` = 4;
 INSERT INTO `items` SET `id` = 37, `num_materials` = 100, `name` = 'Ring', `material_id` = 5, `item_type_id` = 3, `crafting_type_id` = 4;
+
+-- -----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `motifs`;
+CREATE TABLE `motifs` (
+        `id`                    INT             AUTO_INCREMENT PRIMARY KEY,
+        `name`                  CHAR(32)        NOT NULL DEFAULT "",
+        `material_id`           INT             NOT NULL
+) ENGINE InnoDB;
+
+INSERT INTO `motifs` SET `id` = 1, `name` = "High Elf", `material_id` = 61;
+INSERT INTO `motifs` SET `id` = 2, `name` = "Dark Elf", `material_id` = 62;
+INSERT INTO `motifs` SET `id` = 3, `name` = "Wood Elf", `material_id` = 63;
+INSERT INTO `motifs` SET `id` = 4, `name` = "Nord", `material_id` = 64;
+INSERT INTO `motifs` SET `id` = 5, `name` = "Breton", `material_id` = 65;
+INSERT INTO `motifs` SET `id` = 6, `name` = "Redguard", `material_id` = 66;
+INSERT INTO `motifs` SET `id` = 7, `name` = "Khajit", `material_id` = 67;
+INSERT INTO `motifs` SET `id` = 8, `name` = "Orc", `material_id` = 68;
+INSERT INTO `motifs` SET `id` = 9, `name` = "Argonian", `material_id` = 69;
+INSERT INTO `motifs` SET `id` = 10, `name` = "Imperial", `material_id` = 70;
+INSERT INTO `motifs` SET `id` = 11, `name` = "Ancient Elf", `material_id` = 71;
+INSERT INTO `motifs` SET `id` = 12, `name` = "Barbaric", `material_id` = 72;
+INSERT INTO `motifs` SET `id` = 13, `name` = "Primal", `material_id` = 73;
+INSERT INTO `motifs` SET `id` = 14, `name` = "Daedric", `material_id` = 74;
+INSERT INTO `motifs` SET `id` = 15, `name` = "Dwemer", `material_id` = 75;
+INSERT INTO `motifs` SET `id` = 16, `name` = "Glass", `material_id` = 76;
+INSERT INTO `motifs` SET `id` = 17, `name` = "Xivkyn", `material_id` = 77;
+INSERT INTO `motifs` SET `id` = 18, `name` = "Akaviri", `material_id` = 78;
+INSERT INTO `motifs` SET `id` = 19, `name` = "Mercenary", `material_id` = 79;
+INSERT INTO `motifs` SET `id` = 20, `name` = "Yokudan", `material_id` = 80;
+INSERT INTO `motifs` SET `id` = 21, `name` = "Ancient Orc", `material_id` = 81;
+INSERT INTO `motifs` SET `id` = 22, `name` = "Trinimac", `material_id` = 82;
+INSERT INTO `motifs` SET `id` = 23, `name` = "Malacath", `material_id` = 83;
+INSERT INTO `motifs` SET `id` = 24, `name` = "Outlaw", `material_id` = 84;
+INSERT INTO `motifs` SET `id` = 25, `name` = "Aldmeri Dominion", `material_id` = 85;
+INSERT INTO `motifs` SET `id` = 26, `name` = "Daggerfall Covenant", `material_id` = 86;
+INSERT INTO `motifs` SET `id` = 27, `name` = "Ebonheart Pact", `material_id` = 87;
+INSERT INTO `motifs` SET `id` = 28, `name` = "Ra Gada", `material_id` = 88;
+INSERT INTO `motifs` SET `id` = 29, `name` = "Soul Shriven", `material_id` = 89;
+INSERT INTO `motifs` SET `id` = 30, `name` = "Morag Tong", `material_id` = 90;
+INSERT INTO `motifs` SET `id` = 31, `name` = "Skinchanger", `material_id` = 91;
+INSERT INTO `motifs` SET `id` = 32, `name` = "Abah's Watch", `material_id` = 92; -- '
+INSERT INTO `motifs` SET `id` = 33, `name` = "Thieves Guild", `material_id` = 93;
+INSERT INTO `motifs` SET `id` = 34, `name` = "Assassins League", `material_id` = 94;
+INSERT INTO `motifs` SET `id` = 35, `name` = "Dro-m'Athra", `material_id` = 95; -- '
+INSERT INTO `motifs` SET `id` = 36, `name` = "Dark Brotherhood", `material_id` = 96;
+INSERT INTO `motifs` SET `id` = 37, `name` = "Ebony", `material_id` = 97;
+INSERT INTO `motifs` SET `id` = 38, `name` = "Draugr", `material_id` = 98;
+INSERT INTO `motifs` SET `id` = 39, `name` = "Minotaur", `material_id` = 99;
+INSERT INTO `motifs` SET `id` = 40, `name` = "Order of the Hour", `material_id` = 100;
+INSERT INTO `motifs` SET `id` = 41, `name` = "Celestial", `material_id` = 101;
+INSERT INTO `motifs` SET `id` = 42, `name` = "Hollowjack", `material_id` = 102;
+INSERT INTO `motifs` SET `id` = 43, `name` = "Grim Harlequin", `material_id` = 103;
+INSERT INTO `motifs` SET `id` = 44, `name` = "Silken Ring", `material_id` = 104;
+INSERT INTO `motifs` SET `id` = 45, `name` = "Mazzatun", `material_id` = 105;
+INSERT INTO `motifs` SET `id` = 46, `name` = "Stalhrim Frostcaster", `material_id` = 106;
+INSERT INTO `motifs` SET `id` = 47, `name` = "Buoyant Armiger", `material_id` = 107;
+INSERT INTO `motifs` SET `id` = 48, `name` = "Ashlander", `material_id` = 108;
+INSERT INTO `motifs` SET `id` = 49, `name` = "Militant Ordinator", `material_id` = 109;
+INSERT INTO `motifs` SET `id` = 50, `name` = "Telvanni", `material_id` = 110;
+INSERT INTO `motifs` SET `id` = 51, `name` = "Redoran", `material_id` = 111;
+INSERT INTO `motifs` SET `id` = 52, `name` = "Hlaalu", `material_id` = 112;
+INSERT INTO `motifs` SET `id` = 53, `name` = "Tsaesci", `material_id` = 113;
+INSERT INTO `motifs` SET `id` = 54, `name` = "Bloodforge", `material_id` = 114;
+INSERT INTO `motifs` SET `id` = 55, `name` = "Dreadhorn", `material_id` = 115;
+INSERT INTO `motifs` SET `id` = 56, `name` = "Apostle", `material_id` = 116;
+INSERT INTO `motifs` SET `id` = 57, `name` = "Ebonshadow", `material_id` = 116;
+INSERT INTO `motifs` SET `id` = 58, `name` = "Fang Lair", `material_id` = 118;
+INSERT INTO `motifs` SET `id` = 59, `name` = "Scalecaller", `material_id` = 119;
+INSERT INTO `motifs` SET `id` = 60, `name` = "Worm Cult", `material_id` = 120;
+INSERT INTO `motifs` SET `id` = 61, `name` = "Psijic Order", `material_id` = 121;
+INSERT INTO `motifs` SET `id` = 62, `name` = "Sapiarch", `material_id` = 122;
+INSERT INTO `motifs` SET `id` = 63, `name` = "Dremora", `material_id` = 123;
+INSERT INTO `motifs` SET `id` = 64, `name` = "Pyandonean", `material_id` = 124;
+INSERT INTO `motifs` SET `id` = 65, `name` = "Huntsman", `material_id` = 125;
+INSERT INTO `motifs` SET `id` = 66, `name` = "Silver Dawn", `material_id` = 126;
+INSERT INTO `motifs` SET `id` = 67, `name` = "Welkynar", `material_id` = 127;
+INSERT INTO `motifs` SET `id` = 68, `name` = "Honor Guard", `material_id` = 128;
+INSERT INTO `motifs` SET `id` = 69, `name` = "Dead-Water", `material_id` = 129;
+INSERT INTO `motifs` SET `id` = 70, `name` = "Elder Argonian", `material_id` = 130;
+INSERT INTO `motifs` SET `id` = 71, `name` = "Coldsnap Goblin", `material_id` = 131;
+INSERT INTO `motifs` SET `id` = 72, `name` = "Meridian", `material_id` = 132;
+INSERT INTO `motifs` SET `id` = 73, `name` = "Anequina", `material_id` = 133;
+INSERT INTO `motifs` SET `id` = 74, `name` = "Pellitine", `material_id` = 134;
+INSERT INTO `motifs` SET `id` = 75, `name` = "Sunspire", `material_id` = 135;
+INSERT INTO `motifs` SET `id` = 76, `name` = "Dragonguard", `material_id` = 136;
+INSERT INTO `motifs` SET `id` = 77, `name` = "Stags of Z'en", `material_id` = 137; -- '
+INSERT INTO `motifs` SET `id` = 78, `name` = "Moongrave Fane", `material_id` = 138;
+INSERT INTO `motifs` SET `id` = 79, `name` = "Refabricated", `material_id` = 139;
+INSERT INTO `motifs` SET `id` = 80, `name` = "Shield of Senchal", `material_id` = 140;
+INSERT INTO `motifs` SET `id` = 81, `name` = "New Moon Priest", `material_id` = 141;
+INSERT INTO `motifs` SET `id` = 82, `name` = "Icereach Coven", `material_id` = 142;
+INSERT INTO `motifs` SET `id` = 83, `name` = "Pyre Watch", `material_id` = 143;
+INSERT INTO `motifs` SET `id` = 84, `name` = "Blackreach Vanguard", `material_id` = 144;
+INSERT INTO `motifs` SET `id` = 85, `name` = "Greymoor", `material_id` = 145;
+INSERT INTO `motifs` SET `id` = 86, `name` = "Sea Giant", `material_id` = 146;
+INSERT INTO `motifs` SET `id` = 87, `name` = "Ancestral Nord", `material_id` = 147;
+INSERT INTO `motifs` SET `id` = 88, `name` = "Ancestral Orc", `material_id` = 148;
+INSERT INTO `motifs` SET `id` = 89, `name` = "Ancestral High Elf", `material_id` = 149;
+INSERT INTO `motifs` SET `id` = 90, `name` = "Thorn Legion", `material_id` = 150;
+INSERT INTO `motifs` SET `id` = 91, `name` = "Hazardous Alchemy", `material_id` = 151;
+INSERT INTO `motifs` SET `id` = 92, `name` = "Ancestral Akaviri", `material_id` = 152;
+INSERT INTO `motifs` SET `id` = 93, `name` = "Ancestral Breton", `material_id` = 153;
+INSERT INTO `motifs` SET `id` = 94, `name` = "Ancestral Reach", `material_id` = 154;
+INSERT INTO `motifs` SET `id` = 95, `name` = "Nighthollow", `material_id` = 155;
+INSERT INTO `motifs` SET `id` = 96, `name` = "Arkthzand Armory", `material_id` = 156;
+INSERT INTO `motifs` SET `id` = 97, `name` = "Wayward Guardian", `material_id` = 157;
+INSERT INTO `motifs` SET `id` = 98, `name` = "House Hexos", `material_id` = 158;
+INSERT INTO `motifs` SET `id` = 99, `name` = "Waking Flame", `material_id` = 159;
+INSERT INTO `motifs` SET `id` = 100, `name` = "True-Sworn", `material_id` = 160;
+INSERT INTO `motifs` SET `id` = 101, `name` = "Ivory Brigade", `material_id` = 161;
+INSERT INTO `motifs` SET `id` = 102, `name` = "Sul-Xan", `material_id` = 162;
+INSERT INTO `motifs` SET `id` = 103, `name` = "Black Fin Legion", `material_id` = 163;
+INSERT INTO `motifs` SET `id` = 104, `name` = "Ancient Daedric", `material_id` = 164;
+INSERT INTO `motifs` SET `id` = 105, `name` = "Crimson Oath", `material_id` = 165;
+INSERT INTO `motifs` SET `id` = 106, `name` = "Silver Rose", `material_id` = 166;
+INSERT INTO `motifs` SET `id` = 107, `name` = "Annihilarch's Chosen", `material_id` = 167; -- '
+INSERT INTO `motifs` SET `id` = 108, `name` = "Fargrave Guardian", `material_id` = 168;
+INSERT INTO `motifs` SET `id` = 109, `name` = "Dreadsails", `material_id` = 169;
+INSERT INTO `motifs` SET `id` = 110, `name` = "Ascendant Order", `material_id` = 170;
+INSERT INTO `motifs` SET `id` = 111, `name` = "Syrabanic Marine", `material_id` = 171;
+INSERT INTO `motifs` SET `id` = 112, `name` = "Steadfast Society", `material_id` = 172;
+INSERT INTO `motifs` SET `id` = 113, `name` = "Systres Guardian", `material_id` = 173;
+
+-- -----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sets`;
+CREATE TABLE `sets` (
+        `id`                    INT             AUTO_INCREMENT PRIMARY KEY,
+        `name`                  CHAR(32)        NOT NULL DEFAULT ""
+) ENGINE InnoDB;
+
+INSERT INTO `sets` SET `id` = 1, `name` = "Adept Rider";
+INSERT INTO `sets` SET `id` = 2, `name` = "Aetherial Ascension";
+INSERT INTO `sets` SET `id` = 3, `name` = "Alessia's Bulwark"; -- '
+INSERT INTO `sets` SET `id` = 4, `name` = "Ancient Dragonguard";
+INSERT INTO `sets` SET `id` = 5, `name` = "Armor Master";
+INSERT INTO `sets` SET `id` = 6, `name` = "Armor of the Seducer";
+INSERT INTO `sets` SET `id` = 7, `name` = "Ashen Grip";
+INSERT INTO `sets` SET `id` = 8, `name` = "Assassin's Guile"; -- '
+INSERT INTO `sets` SET `id` = 9, `name` = "Chimera's Rebuke"; -- '
+INSERT INTO `sets` SET `id` = 10, `name` = "Claw of the Forest Wraith";
+INSERT INTO `sets` SET `id` = 11, `name` = "Clever Alchemist";
+INSERT INTO `sets` SET `id` = 12, `name` = "Coldharbour's Favorite"; -- '
+INSERT INTO `sets` SET `id` = 13, `name` = "Critical Riposte";
+INSERT INTO `sets` SET `id` = 14, `name` = "Daedric Trickery";
+INSERT INTO `sets` SET `id` = 15, `name` = "Daring Corsair";
+INSERT INTO `sets` SET `id` = 16, `name` = "Dauntless Combatant";
+INSERT INTO `sets` SET `id` = 17, `name` = "Deadlands Demolisher";
+INSERT INTO `sets` SET `id` = 18, `name` = "Death's Wind"; -- '
+INSERT INTO `sets` SET `id` = 19, `name` = "Diamond's Victory"; -- '
+INSERT INTO `sets` SET `id` = 20, `name` = "Dragon's Appetite"; -- '
+INSERT INTO `sets` SET `id` = 21, `name` = "Druid's Braid"; -- '
+INSERT INTO `sets` SET `id` = 22, `name` = "Eternal Hunt";
+INSERT INTO `sets` SET `id` = 23, `name` = "Eyes of Mara";
+INSERT INTO `sets` SET `id` = 24, `name` = "Fortified Brass";
+INSERT INTO `sets` SET `id` = 25, `name` = "Grave-Stake Collector";
+INSERT INTO `sets` SET `id` = 26, `name` = "Heartland Conqueror";
+INSERT INTO `sets` SET `id` = 27, `name` = "Hist Bark";
+INSERT INTO `sets` SET `id` = 28, `name` = "Hist Whisperer";
+INSERT INTO `sets` SET `id` = 29, `name` = "Hunding's Rage"; -- '
+INSERT INTO `sets` SET `id` = 30, `name` = "Innate Axiom";
+INSERT INTO `sets` SET `id` = 31, `name` = "Iron Flask";
+INSERT INTO `sets` SET `id` = 32, `name` = "Kagrenac's Hope"; -- '
+INSERT INTO `sets` SET `id` = 33, `name` = "Kvatch Gladiator";
+INSERT INTO `sets` SET `id` = 34, `name` = "Law of Julianos";
+INSERT INTO `sets` SET `id` = 35, `name` = "Legacy of Karth";
+INSERT INTO `sets` SET `id` = 36, `name` = "Magnus' Gift"; -- '
+INSERT INTO `sets` SET `id` = 37, `name` = "Mechanical Acuity";
+INSERT INTO `sets` SET `id` = 38, `name` = "Might of the Lost Legion";
+INSERT INTO `sets` SET `id` = 39, `name` = "Morkuldin";
+INSERT INTO `sets` SET `id` = 40, `name` = "Naga Shaman";
+INSERT INTO `sets` SET `id` = 41, `name` = "New Moon Acolyte";
+INSERT INTO `sets` SET `id` = 42, `name` = "Night Mother's Gaze"; -- '
+INSERT INTO `sets` SET `id` = 43, `name` = "Night's Silence"; -- '
+INSERT INTO `sets` SET `id` = 44, `name` = "Noble's Conquest"; -- '
+INSERT INTO `sets` SET `id` = 45, `name` = "Nocturnal's Favor"; -- '
+INSERT INTO `sets` SET `id` = 46, `name` = "Oblivion's Foe"; -- '
+INSERT INTO `sets` SET `id` = 47, `name` = "Old Growth Brewer";
+INSERT INTO `sets` SET `id` = 48, `name` = "Order's Wrath"; -- '
+INSERT INTO `sets` SET `id` = 49, `name` = "Orgnum's Scales"; -- '
+INSERT INTO `sets` SET `id` = 50, `name` = "Pelinal's Wrath"; -- '
+INSERT INTO `sets` SET `id` = 51, `name` = "Red Eagle's Fury"; -- '
+INSERT INTO `sets` SET `id` = 52, `name` = "Redistributor";
+INSERT INTO `sets` SET `id` = 53, `name` = "Senche-Raht's Grit"; -- '
+INSERT INTO `sets` SET `id` = 54, `name` = "Serpent's Disdain"; -- '
+INSERT INTO `sets` SET `id` = 55, `name` = "Shacklebreaker";
+INSERT INTO `sets` SET `id` = 56, `name` = "Shalidor's Curse"; -- '
+INSERT INTO `sets` SET `id` = 57, `name` = "Sload's Semblance"; -- '
+INSERT INTO `sets` SET `id` = 58, `name` = "Song of Lamae";
+INSERT INTO `sets` SET `id` = 59, `name` = "Spectre's Eye"; -- '
+INSERT INTO `sets` SET `id` = 60, `name` = "Spell Parasite";
+INSERT INTO `sets` SET `id` = 61, `name` = "Stuhn's Favor"; -- '
+INSERT INTO `sets` SET `id` = 62, `name` = "Tava's Favor"; -- '
+INSERT INTO `sets` SET `id` = 63, `name` = "Torug's Pact"; -- '
+INSERT INTO `sets` SET `id` = 64, `name` = "Trial by Fire";
+INSERT INTO `sets` SET `id` = 65, `name` = "Twice-Born Star";
+INSERT INTO `sets` SET `id` = 66, `name` = "Twilight's Embrace"; -- '
+INSERT INTO `sets` SET `id` = 67, `name` = "Unchained Aggressor";
+INSERT INTO `sets` SET `id` = 68, `name` = "Vampire's Kiss"; -- '
+INSERT INTO `sets` SET `id` = 69, `name` = "Varen's Legacy"; -- '
+INSERT INTO `sets` SET `id` = 70, `name` = "Vastarie's Tutelage"; -- '
+INSERT INTO `sets` SET `id` = 71, `name` = "Way of the Arena";
+INSERT INTO `sets` SET `id` = 72, `name` = "Whitestrake's Retribution"; -- '
+INSERT INTO `sets` SET `id` = 73, `name` = "Willow's Path"; -- '
+INSERT INTO `sets` SET `id` = 74, `name` = "Wretched Vitality";

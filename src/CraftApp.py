@@ -22,8 +22,8 @@ class CraftApp:
         try:
             all_data = self.__db.get_all_materials()
             result = { "success" : 1, "data" : all_data }
-        except CraftException as E:
-            result = { "success" : 0, "errorMsg" : E.msg }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
             print( "Exception: ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
@@ -40,8 +40,8 @@ class CraftApp:
         try:
             data = self.__db.get_material( material_id )
             result = { "success" : 1, "data" : data }
-        except CraftException as E:
-            result = { "success" : 0, "errorMsg" : E.msg }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
             print( "Exception: ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
@@ -55,8 +55,8 @@ class CraftApp:
         try:
             all_data = self.__db.get_all_armor_types()
             result = { "success" : 1, "data" : all_data }
-        except CraftException as E:
-            result = { "success" : 0, "errorMsg" : E.msg }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
             print( "Exception: ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
@@ -70,8 +70,8 @@ class CraftApp:
         try:
             all_data = self.__db.get_all_crafting_types()
             result = { "success" : 1, "data" : all_data }
-        except CraftException as E:
-            result = { "success" : 0, "errorMsg" : E.msg }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
             print( "Exception: ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
@@ -85,12 +85,52 @@ class CraftApp:
         try:
             all_data = self.__db.get_all_item_types()
             result = { "success" : 1, "data" : all_data }
-        except CraftException as E:
-            result = { "success" : 0, "errorMsg" : E.msg }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
             print( "Exception: ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
+        return result
+
+    ################################################################################
+    # Get all motifs
+
+    def motifs( self ):
+        try:
+            all_data = self.__db.get_all_motifs()
+            result = { "success" : 1, "data" : all_data }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
+        except Exception as e:
+            print( "Exception: ", e )
+            result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
+
+        return result
+
+    ################################################################################
+    # Get motif by id or name
+
+    def motif( self, id_or_name=None ):
+        if ( id_or_name == None ):
+            return { "success" : 0, "errorMsg" : "No motif specified" }
+
+        try:
+            motif_id = None
+            motif_name = None
+            try:
+                motif_id = int(id_or_name)
+            except:
+                motif_name = id_or_name
+            
+            all_data = self.__db.get_motif( motif_id, motif_name )
+            result = { "success" : 1, "data" : all_data }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
+        except Exception as e:
+            print( "Exception: ", e )
+            result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
+            
         return result
 
     ################################################################################
@@ -103,8 +143,8 @@ class CraftApp:
         try:
             all_data = self.__db.get_traits_by_item_type( item_type_id )
             result = { "success" : 1, "data" : all_data }
-        except CraftException as E:
-            result = { "success" : 0, "errorMsg" : E.msg }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
             print( "Exception: ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
@@ -133,14 +173,15 @@ class CraftApp:
     # get_item_price
     # Get price for single item
 
-    def get_item_price( self, item_id=None, trait_id=None ):
+    def get_item_price( self, item_id=None, trait_id=None, motif_id=None ):
         if ( item_id == None ):
             raise CraftException( "No item specified" );
 
-        item = self.__db.get_item( item_id )
+        item = self.__db.get_item( item_id, motif_id )
         print( item )
         item_material = self.__db.get_material( item["material_id"] )
-        price = item["num_materials"] * item_material["price"]
+        motif_material = self.__db.get_material( item["material_id"] )
+        price = item["num_materials"] * item_material["price"] + motif_material["price"]
 
         if ( trait_id != None ):
             trait = self.__db.get_trait( trait_id )

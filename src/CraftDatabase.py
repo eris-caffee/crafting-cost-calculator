@@ -31,7 +31,7 @@ class CraftDatabase:
     # get_all_materials
 
     def get_all_materials( self ):
-        query = ( "SELECT * FROM materials" )
+        query = ( "SELECT * FROM materials ORDER BY name" )
         self.__db_cursor.execute( query )
         raw_data = self.__db_cursor.fetchall()
         all_data = []
@@ -86,7 +86,8 @@ class CraftDatabase:
             "FROM traits "
             "     INNER JOIN materials ON traits.material_id = materials.id "
             "     INNER JOIN item_types ON traits.item_type_id = item_types.id "
-            "WHERE item_type_id = %(item_type_id)s"
+            "WHERE item_type_id = %(item_type_id)s "
+            "ORDER BY traits.name"
         )
         self.__db_cursor.execute( query, { "item_type_id" : item_type_id } )
         raw_data = self.__db_cursor.fetchall()
@@ -137,7 +138,7 @@ class CraftDatabase:
     # get_all_armor_types
 
     def get_all_armor_types( self ):
-        query = ( "SELECT * FROM armor_types" )
+        query = ( "SELECT * FROM armor_types ORDER BY id" )
         self.__db_cursor.execute( query )
         raw_data = self.__db_cursor.fetchall()
         all_data = []
@@ -149,7 +150,7 @@ class CraftDatabase:
     # get_all_crafting_types
 
     def get_all_crafting_types( self ):
-        query = ( "SELECT * FROM crafting_types" )
+        query = ( "SELECT * FROM crafting_types ORDER BY name" )
         self.__db_cursor.execute( query )
         raw_data = self.__db_cursor.fetchall()
         all_data = []
@@ -161,7 +162,7 @@ class CraftDatabase:
     # get_all_item_types
 
     def get_all_item_types( self ):
-        query = ( "SELECT * FROM item_types" )
+        query = ( "SELECT * FROM item_types ORDER BY name" )
         self.__db_cursor.execute( query )
         raw_data = self.__db_cursor.fetchall()
         all_data = []
@@ -189,12 +190,66 @@ class CraftDatabase:
         }
 
     ################################################################################
+    # get all motifs
+
+    def get_all_motifs( self ):
+        query = ( "SELECT * FROM sets ORDER BY name" )
+        self.__db_cursor.execute( query )
+        raw_data = self.__db_cursor.fetchall()
+        all_data = []
+        for row in raw_data:
+            all_data.append( { "id" : row[0], "name" : row[1] } )
+        return all_data
+
+
+    ################################################################################
+    # get_motif
+    # specify one of motif_id or motif_name
+
+    def get_motif( self, motif_id=None, motif_name=None ):
+        query = None
+        query_args = None
+
+        if ( motif_id != None ):
+            query = ( "SELECT * FROM motifs WHERE id = %(motif_id)s" )
+            query_args = { "motif_id" : motif_id }
+        else:
+            query = ( "SELECT * FROM motifs WHERE name = %(motif_name)s" )
+            query_args = { "motif_name" : motif_name }
+
+        if ( query == None ):
+            raise CraftException( "No motif specified" )
+
+        self.__db_cursor.execute( query, query_args )
+        row = self.__db_cursor.fetchone()
+
+        if ( row == None ):
+            if ( motif_id != None ):
+                id_or_name = str(motif_id)
+            else:
+                id_or_name = motif_name
+            raise CraftException( "Motif " + id_or_name + "not found" )
+
+        return {
+            "id " : row[0],
+            "name" : row[1],
+            "material_id" : row[2]
+        }
+    
+    ################################################################################
     # get_item
     # Get single item by ID
+    # motif_id optional.  Will assume Breton is not specified
 
-    def get_item( self, item_id=None ):
+    def get_item( self, item_id=None, motif_id=None ):
         if ( item_id == None ):
             raise CraftException( "No item specified" );
+
+        motif = None
+        if ( motif_id == None ):
+            motif = self.get_motif( None, "Breton" )
+        else:
+            motif = self.get_motif( motif_id )
 
         query = (
             "SELECT * "
@@ -221,11 +276,11 @@ class CraftDatabase:
     ################################################################################
     # get_items_by_type
 
-    def get_items_by_type( self, item_type_id ):
+    def get_items_by_type( self, item_type_id=None ):
         if ( item_type_id == None ):
             raise CraftException( "No item type specified" );
         
-        # Verify that the specified item_type exists.
+        # Verify that the specified things exist.
         self.get_item_type( item_type_id )
 
         query = (
