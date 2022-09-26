@@ -219,26 +219,6 @@ class CraftDatabase:
         }
 
     ################################################################################
-    # get_item_price
-    # Get price for single item
-
-    def get_item_price( self, item_id=None, trait_id=None ):
-        if ( item_id == None ):
-            raise CraftException( "No item specified" );
-
-        item = self.get_item( item_id )
-        print( item )
-        item_material = self.get_material( item["material_id"] )
-        price = item["num_materials"] * item_material["price"]
-
-        if ( trait_id != None ):
-            trait = self.get_trait( trait_id )
-            trait_material = self.get_material( trait["material_id"] )
-            price = price + trait_material["price"]
-
-        return price
-
-    ################################################################################
     # get_items_by_type
 
     def get_items_by_type( self, item_type_id ):

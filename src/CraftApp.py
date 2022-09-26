@@ -130,6 +130,26 @@ class CraftApp:
         return result
 
     ################################################################################
+    # get_item_price
+    # Get price for single item
+
+    def get_item_price( self, item_id=None, trait_id=None ):
+        if ( item_id == None ):
+            raise CraftException( "No item specified" );
+
+        item = self.__db.get_item( item_id )
+        print( item )
+        item_material = self.__db.get_material( item["material_id"] )
+        price = item["num_materials"] * item_material["price"]
+
+        if ( trait_id != None ):
+            trait = self.__db.get_trait( trait_id )
+            trait_material = self.__db.get_material( trait["material_id"] )
+            price = price + trait_material["price"]
+
+        return price
+
+    ################################################################################
     # Calculate order total
 
     def order( self, order ):
@@ -150,7 +170,7 @@ class CraftApp:
                 trait_id = None
                 if ( "trait" in item ):
                     trait_id = item["trait"]
-                price = self.__db.get_item_price( item_id, trait_id )
+                price = self.get_item_price( item_id, trait_id )
                 item["price"] = price
                 order_data["total"] += price
             
