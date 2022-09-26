@@ -28,12 +28,6 @@ class CraftDatabase:
         self.__db_cursor = self.__db.cursor()
 
     ################################################################################
-    # get_db_cursor
-
-    def get_db_cursor( self ):
-        return self.__db_cursor
-
-    ################################################################################
     # get_all_materials
 
     def get_all_materials( self ):
@@ -233,13 +227,14 @@ class CraftDatabase:
             raise CraftException( "No item specified" );
 
         item = self.get_item( item_id )
-        item_material = self.get_material( item.material_id )
-        price = item.num_materials * item_material.price
+        print( item )
+        item_material = self.get_material( item["material_id"] )
+        price = item["num_materials"] * item_material["price"]
 
         if ( trait_id != None ):
             trait = self.get_trait( trait_id )
-            trait_material = self.get_material( trait.material_id )
-            price = price + trait_material.price
+            trait_material = self.get_material( trait["material_id"] )
+            price = price + trait_material["price"]
 
         return price
 
