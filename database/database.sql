@@ -1,7 +1,9 @@
--- DROP DATABASE IF EXISTS `crafting_cost_estimator`;
--- CREATE DATABASE 'crafting_-cost_estimator';
+-- DROP DATABASE IF EXISTS `crafting_cost_calculator`;
+-- CREATE DATABASE 'crafting_cost_calculator';
 
-USE `crafting_cost_estimator`;
+USE `crafting_cost_calculator`;
+
+SET foreign_key_checks = 0;
 
 -- -----------------------------------------------------------------------------
 
@@ -9,14 +11,14 @@ DROP TABLE IF EXISTS `materials`;
 CREATE TABLE `materials` (
         `id`    INT             AUTO_INCREMENT PRIMARY KEY,
         `name`  CHAR(32)        NOT NULL DEFAULT "",
-        `cost`  FLOAT           NOT NULL DEFAULT 1000000
+        `price` FLOAT           NOT NULL DEFAULT 1000000
 ) ENGINE InnoDB;
 
 INSERT INTO `materials` SET `id` = 1, `name` = 'Ancestor Silk';
 INSERT INTO `materials` SET `id` = 2, `name` = 'Rubedo Leather';
 INSERT INTO `materials` SET `id` = 3, `name` = 'Rubedite Ingot';
 INSERT INTO `materials` SET `id` = 4, `name` = 'Sanded Ruby Ash';
-INSERT INTO `materials` SET `id` = 5, `name` = 'Platinum Ingot';
+INSERT INTO `materials` SET `id` = 5, `name` = 'Platinum Ounce';
 INSERT INTO `materials` SET `id` = 6, `name` = 'Hemming';
 INSERT INTO `materials` SET `id` = 7, `name` = 'Embroidery';
 INSERT INTO `materials` SET `id` = 8, `name` = 'Elegant Lining';
@@ -38,7 +40,7 @@ INSERT INTO `materials` SET `id` = 23, `name` = 'Bloodstone';
 INSERT INTO `materials` SET `id` = 24, `name` = 'Garnet';
 INSERT INTO `materials` SET `id` = 25, `name` = 'Sapphire';
 INSERT INTO `materials` SET `id` = 26, `name` = 'Fortified Nirncrux';
-INSERT INTO `materials` SET `id` = 27, `name` = 'Chrysolite';
+INSERT INTO `materials` SET `id` = 27, `name` = 'Chysolite';
 INSERT INTO `materials` SET `id` = 28, `name` = 'Amethyst';
 INSERT INTO `materials` SET `id` = 29, `name` = 'Ruby';
 INSERT INTO `materials` SET `id` = 30, `name` = 'Jade';
@@ -60,18 +62,7 @@ INSERT INTO `materials` SET `id` = 45, `name` = 'Honing Stone';
 INSERT INTO `materials` SET `id` = 46, `name` = 'Dwarven Oil';
 INSERT INTO `materials` SET `id` = 47, `name` = 'Grain Solvent';
 INSERT INTO `materials` SET `id` = 48, `name` = 'Tempering Alloy';
-INSERT INTO `materials` SET `id` = 49, `name` = 'Hemming';
-INSERT INTO `materials` SET `id` = 50, `name` = 'Embroidery';
-INSERT INTO `materials` SET `id` = 51, `name` = 'Elegant Lining';
-INSERT INTO `materials` SET `id` = 52, `name` = 'Dreugh Wax';
-INSERT INTO `materials` SET `id` = 53, `name` = 'Pitch';
-INSERT INTO `materials` SET `id` = 54, `name` = 'Turpen';
-INSERT INTO `materials` SET `id` = 55, `name` = 'Mastic';
-INSERT INTO `materials` SET `id` = 56, `name` = 'Rosin';
-INSERT INTO `materials` SET `id` = 57, `name` = 'Terne Plating';
-INSERT INTO `materials` SET `id` = 58, `name` = 'Iridium Plating';
-INSERT INTO `materials` SET `id` = 59, `name` = 'Zircon Plating';
-INSERT INTO `materials` SET `id` = 60, `name` = 'Chromium Plating';
+-- Deleted some duplicate rows, so there's a gap in the numbers
 INSERT INTO `materials` SET `id` = 61, `name` = "Adamantite";
 INSERT INTO `materials` SET `id` = 62, `name` = "Obsidian";
 INSERT INTO `materials` SET `id` = 63, `name` = "Bone";
@@ -83,7 +74,7 @@ INSERT INTO `materials` SET `id` = 68, `name` = "Manganese";
 INSERT INTO `materials` SET `id` = 69, `name` = "Flint";
 INSERT INTO `materials` SET `id` = 70, `name` = "Nickel";
 INSERT INTO `materials` SET `id` = 71, `name` = "Palladium";
-INSERT INTO `materials` SET `id` = 72, `name` = "Copper";
+INSERT INTO `materials` SET `id` = 72, `name` = "Copper Ounce";
 INSERT INTO `materials` SET `id` = 73, `name` = "Argentum";
 INSERT INTO `materials` SET `id` = 74, `name` = "Daedra Heart";
 INSERT INTO `materials` SET `id` = 75, `name` = "Dwemer Frame";
@@ -124,7 +115,7 @@ INSERT INTO `materials` SET `id` = 109, `name` = "Lustrous Sphalerite";
 INSERT INTO `materials` SET `id` = 110, `name` = "Wrought Ferrofungus";
 INSERT INTO `materials` SET `id` = 111, `name` = "Polished Scarab Elytra";
 INSERT INTO `materials` SET `id` = 112, `name` = "Refined Bonemold Resin";
-INSERT INTO `materials` SET `id` = 113, `name` = "Base Game";
+
 INSERT INTO `materials` SET `id` = 114, `name` = "Bloodroot Flux";
 INSERT INTO `materials` SET `id` = 115, `name` = "Minotaur Bezoar";
 INSERT INTO `materials` SET `id` = 116, `name` = "Tempered Brass";
@@ -137,9 +128,9 @@ INSERT INTO `materials` SET `id` = 122, `name` = "Culanda Lacquer";
 INSERT INTO `materials` SET `id` = 123, `name` = "Warrior's Heart Ashes"; -- '
 INSERT INTO `materials` SET `id` = 124, `name` = "Sea Serpent Hide";
 INSERT INTO `materials` SET `id` = 125, `name` = "Bloodscent Dew";
-INSERT INTO `materials` SET `id` = 126, `name` = "Argent Pelts";
-INSERT INTO `materials` SET `id` = 127, `name` = "Gryphon Plumes";
-INSERT INTO `materials` SET `id` = 128, `name` = "Red Diamond Seals";
+INSERT INTO `materials` SET `id` = 126, `name` = "Argent Pelt";
+INSERT INTO `materials` SET `id` = 127, `name` = "Gryphon Plume";
+INSERT INTO `materials` SET `id` = 128, `name` = "Red Diamond Seal";
 INSERT INTO `materials` SET `id` = 129, `name` = "Crocodile Leather";
 INSERT INTO `materials` SET `id` = 130, `name` = "Hackwing Plumage";
 INSERT INTO `materials` SET `id` = 131, `name` = "Goblin-Cloth Scrap";
@@ -149,7 +140,7 @@ INSERT INTO `materials` SET `id` = 134, `name` = "Dragonthread";
 INSERT INTO `materials` SET `id` = 135, `name` = "Frost Embers";
 INSERT INTO `materials` SET `id` = 136, `name` = "Gilding Salts";
 INSERT INTO `materials` SET `id` = 137, `name` = "Oath Cord";
-INSERT INTO `materials` SET `id` = 138, `name` = "Sangiin's Blood"; -- '
+INSERT INTO `materials` SET `id` = 138, `name` = "Blood of Sahrotnax";
 INSERT INTO `materials` SET `id` = 139, `name` = "Polished Rivets";
 INSERT INTO `materials` SET `id` = 140, `name` = "Carmine Shieldsilk";
 INSERT INTO `materials` SET `id` = 141, `name` = "Aeonstone Shard";
@@ -168,13 +159,13 @@ INSERT INTO `materials` SET `id` = 153, `name` = "Etched Molybdenum";
 INSERT INTO `materials` SET `id` = 154, `name` = "Etched Bronze";
 INSERT INTO `materials` SET `id` = 155, `name` = "Umbral Droplet";
 INSERT INTO `materials` SET `id` = 156, `name` = "Arkthzand Sprocket";
-INSERT INTO `materials` SET `id` = 157. `name` = "Hawk Skull";
+INSERT INTO `materials` SET `id` = 157, `name` = "Hawk Skull";
 INSERT INTO `materials` SET `id` = 158, `name` = "Etched Nickel";
 INSERT INTO `materials` SET `id` = 159, `name` = "Chokeberry Extract";
 INSERT INTO `materials` SET `id` = 160, `name` = "Fulgid Epidote";
 INSERT INTO `materials` SET `id` = 161, `name` = "Ivory Brigade Clasp";
-INSERT INTO `materials` SET `id` = 162, `name` = "Death-Hopper Vocal Sac";
-INSERT INTO `materials` SET `id` = 163, `name` = "Marshnettle Sprig";
+INSERT INTO `materials` SET `id` = 162, `name` = "Death Hopper Vocal Sac";
+INSERT INTO `materials` SET `id` = 163, `name` = "Marsh Nettle Sprig";
 INSERT INTO `materials` SET `id` = 164, `name` = "Pristine Daedric Heart";
 INSERT INTO `materials` SET `id` = 165, `name` = "Filed Barbs";
 INSERT INTO `materials` SET `id` = 166, `name` = "Rose Engraving";
@@ -533,3 +524,7 @@ INSERT INTO `sets` SET `id` = 71, `name` = "Way of the Arena";
 INSERT INTO `sets` SET `id` = 72, `name` = "Whitestrake's Retribution"; -- '
 INSERT INTO `sets` SET `id` = 73, `name` = "Willow's Path"; -- '
 INSERT INTO `sets` SET `id` = 74, `name` = "Wretched Vitality";
+
+-- -----------------------------------------------------------------------------
+
+SET foreign_key_checks = 1;
