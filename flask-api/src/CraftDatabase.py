@@ -30,8 +30,6 @@ class CraftDatabase:
     def connect( self ):
         return mysql.connect( host=self.__db_host, database=self.__db_database,
                               user=self.__db_user, password=self.__db_password )
-
-        
     
     ################################################################################
     # get_all_materials
