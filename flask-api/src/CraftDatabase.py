@@ -6,8 +6,10 @@ from CraftException import *
 
 class CraftDatabase:
 
-    __db = None
-    __db_cursor = None
+    __db_host = None
+    __db_database = None
+    __db_user = None
+    __db_password = None
     
     ################################################################################
 
@@ -17,26 +19,34 @@ class CraftDatabase:
         config = configparser.ConfigParser()
         config.read(path + "/../config.ini")
 
-        db_host = config["Database"]["Host"]
-        db_database = config["Database"]["Database"]
-        db_user = config["Database"]["User"]
-        db_password = config["Database"]["Password"]
+        self.__db_host = config["Database"]["Host"]
+        self.__db_database = config["Database"]["Database"]
+        self.__db_user = config["Database"]["User"]
+        self.__db_password = config["Database"]["Password"]
         
-        self.__db = mysql.connect( host=db_host, database=db_database,
-                                   user=db_user, password=db_password )
+    ################################################################################
+    # open connection
 
-        self.__db_cursor = self.__db.cursor()
+    def connect( self ):
+        return mysql.connect( host=self.__db_host, database=self.__db_database,
+                              user=self.__db_user, password=self.__db_password )
 
+        
+    
     ################################################################################
     # get_all_materials
 
     def get_all_materials( self ):
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = ( "SELECT * FROM materials ORDER BY name" )
-        self.__db_cursor.execute( query )
-        raw_data = self.__db_cursor.fetchall()
+        db_cursor.execute( query )
+        raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( { "id" : row[0], "name" : row[1], "price" : row[2] } )
+        db_cursor.close()
+        db.close()
         return all_data
         
     ################################################################################
@@ -47,17 +57,22 @@ class CraftDatabase:
         if ( material_id == None ):
             raise CraftException( "No material specified" );
 
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = (
             "SELECT * "
             "FROM materials "
             "WHERE id = %(material_id)s"
         )
 
-        self.__db_cursor.execute( query, { "material_id" : material_id } )
-        row = self.__db_cursor.fetchone()
+        db_cursor.execute( query, { "material_id" : material_id } )
+        row = db_cursor.fetchone()
 
         if ( row == None ):
             raise CraftException( "Material " + str(material_id) + " not found" )
+
+        db_cursor.close()
+        db.close()
 
         return {
             "id" : row[0],
@@ -75,6 +90,8 @@ class CraftDatabase:
         # Verify that the specified item_type exists.
         self.get_item_type( item_type_id )
         
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = (
             "SELECT traits.id, "
             "       traits.name, "
@@ -89,8 +106,8 @@ class CraftDatabase:
             "WHERE item_type_id = %(item_type_id)s "
             "ORDER BY traits.name"
         )
-        self.__db_cursor.execute( query, { "item_type_id" : item_type_id } )
-        raw_data = self.__db_cursor.fetchall()
+        db_cursor.execute( query, { "item_type_id" : item_type_id } )
+        raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( {
@@ -103,6 +120,9 @@ class CraftDatabase:
                 "item_type_name" : row[6]
             } )
 
+        db_cursor.close()
+        db.close()
+
         return all_data
 
 
@@ -114,17 +134,22 @@ class CraftDatabase:
         if ( trait_id == None ):
             raise CraftException( "No trait specified" );
 
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = (
             "SELECT * "
             "FROM traits "
             "WHERE id = %(trait_id)s"
         )
 
-        self.__db_cursor.execute( query, { "trait_id" : trait_id } )
-        row = self.__db_cursor.fetchone()
+        db_cursor.execute( query, { "trait_id" : trait_id } )
+        row = db_cursor.fetchone()
 
         if ( row == None ):
             raise CraftException( "Trait " + str(trait_id) + "not found" )
+
+        db_cursor.close()
+        db.close()
 
         return {
             "id" : row[0],
@@ -138,36 +163,48 @@ class CraftDatabase:
     # get_all_armor_types
 
     def get_all_armor_types( self ):
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = ( "SELECT * FROM armor_types ORDER BY id" )
-        self.__db_cursor.execute( query )
-        raw_data = self.__db_cursor.fetchall()
+        db_cursor.execute( query )
+        raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( { "id" : row[0], "name" : row[1] } )
+        db_cursor.close()
+        db.close()
         return all_data
             
     ################################################################################
     # get_all_crafting_types
 
     def get_all_crafting_types( self ):
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = ( "SELECT * FROM crafting_types ORDER BY name" )
-        self.__db_cursor.execute( query )
-        raw_data = self.__db_cursor.fetchall()
+        db_cursor.execute( query )
+        raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( { "id" : row[0], "name" : row[1] } )
+        db_cursor.close()
+        db.close()
         return all_data
             
     ################################################################################
     # get_all_item_types
 
     def get_all_item_types( self ):
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = ( "SELECT * FROM item_types ORDER BY name" )
-        self.__db_cursor.execute( query )
-        raw_data = self.__db_cursor.fetchall()
+        db_cursor.execute( query )
+        raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( { "id" : row[0], "name" : row[1] } )
+        db_cursor.close()
+        db.close()
         return all_data
             
     ################################################################################
@@ -177,13 +214,18 @@ class CraftDatabase:
         if ( item_type_id == None ):
             raise CraftException( "No item type specified" );
 
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = ( "SELECT * FROM item_types WHERE id = %(item_type_id)s" )
-        self.__db_cursor.execute( query, { "item_type_id" : item_type_id } )
-        row = self.__db_cursor.fetchone()
+        db_cursor.execute( query, { "item_type_id" : item_type_id } )
+        row = db_cursor.fetchone()
 
         if ( row == None ):
             raise CraftException( "Item type " + str(item_type_id) + " not found" )
         
+        db_cursor.close()
+        db.close()
+
         return {
             "id" : row[0],
             "name" : row[1]
@@ -193,12 +235,16 @@ class CraftDatabase:
     # get all motifs
 
     def get_all_motifs( self ):
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = ( "SELECT * FROM sets ORDER BY name" )
-        self.__db_cursor.execute( query )
-        raw_data = self.__db_cursor.fetchall()
+        db_cursor.execute( query )
+        raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( { "id" : row[0], "name" : row[1] } )
+        db_cursor.close()
+        db.close()
         return all_data
 
 
@@ -207,6 +253,8 @@ class CraftDatabase:
     # specify one of motif_id or motif_name
 
     def get_motif( self, motif_id=None, motif_name=None ):
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = None
         query_args = None
 
@@ -220,8 +268,8 @@ class CraftDatabase:
         if ( query == None ):
             raise CraftException( "No motif specified" )
 
-        self.__db_cursor.execute( query, query_args )
-        row = self.__db_cursor.fetchone()
+        db_cursor.execute( query, query_args )
+        row = db_cursor.fetchone()
 
         if ( row == None ):
             if ( motif_id != None ):
@@ -229,6 +277,9 @@ class CraftDatabase:
             else:
                 id_or_name = motif_name
             raise CraftException( "Motif " + id_or_name + "not found" )
+
+        db_cursor.close()
+        db.close()
 
         return {
             "id " : row[0],
@@ -251,18 +302,23 @@ class CraftDatabase:
         else:
             motif = self.get_motif( motif_id )
 
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = (
             "SELECT * "
             "FROM items "
             "WHERE id = %(item_id)s"
         )
 
-        self.__db_cursor.execute( query, { "item_id" : item_id } )
-        row = self.__db_cursor.fetchone()
+        db_cursor.execute( query, { "item_id" : item_id } )
+        row = db_cursor.fetchone()
 
         if ( row == None ):
             raise CraftException( "Item " + str(item_id) + "not found" )
     
+        db_cursor.close()
+        db.close()
+
         return {
             "id" : row[0],
             "name" : row[1],
@@ -283,6 +339,8 @@ class CraftDatabase:
         # Verify that the specified things exist.
         self.get_item_type( item_type_id )
 
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
         query = (
             "SELECT items.id, "
             "       items.name, "
@@ -303,8 +361,8 @@ class CraftDatabase:
             "WHERE items.item_type_id = %(item_type_id)s"
         )
 
-        self.__db_cursor.execute( query, { "item_type_id" : item_type_id } )
-        raw_data = self.__db_cursor.fetchall()
+        db_cursor.execute( query, { "item_type_id" : item_type_id } )
+        raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( {
@@ -320,6 +378,8 @@ class CraftDatabase:
                 "armor_type_id" : row[9],
                 "armor_type_name" : row[10]
             } )
+        db_cursor.close()
+        db.close()
 
         return all_data
     
