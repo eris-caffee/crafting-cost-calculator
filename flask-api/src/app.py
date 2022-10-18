@@ -1,10 +1,12 @@
 from flask import Flask, request
+from flask_cors import CORS
 
 from CraftApp import *
 
 ################################################################################
 
 flaskApp = Flask(__name__)
+CORS( flaskApp, origins=["http://localhost:3000"] )
 
 craftApp = CraftApp()
 

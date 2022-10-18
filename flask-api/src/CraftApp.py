@@ -25,7 +25,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (materials): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -43,7 +43,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (material): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -58,7 +58,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (armor_types): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -73,7 +73,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (crafing_types): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -88,7 +88,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (item_types): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -103,7 +103,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (motifs): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -128,7 +128,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (motif): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
             
         return result
@@ -146,7 +146,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (traits): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -164,7 +164,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (items): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
 
         return result
@@ -220,7 +220,7 @@ class CraftApp:
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }
         except Exception as e:
-            print( "Exception: ", e )
+            print( "Exception (order): ", e )
             result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
             
         return result
