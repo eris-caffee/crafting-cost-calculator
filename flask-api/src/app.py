@@ -35,6 +35,11 @@ def crafting_types():
 def item_types():
     return craftApp.item_types()
 
+# Get all sets
+@flaskApp.route( "/sets" )
+def sets():
+    return craftApp.sets()
+
 # Get all motifs
 @flaskApp.route( "/motifs" )
 def motifs():
@@ -50,9 +55,11 @@ def traits( item_type_id = None ):
     return craftApp.traits( item_type_id )
 
 # Get items by item type id
-@flaskApp.route( "/items/<int:item_type_id>" )
-def items( item_type_id = None ):
-    return craftApp.items( item_type_id )
+@flaskApp.route( "/items/<int:item_type_id>/" )
+# Get items by item type id and armor_type_id
+@flaskApp.route( "/items/<int:item_type_id>/<int:armor_type_id>" )
+def items( item_type_id = None, armor_type_id = None ):
+    return craftApp.items( item_type_id, armor_type_id )
 
 # calculate order total
 @flaskApp.route( "/order", methods = [ "POST" ] )

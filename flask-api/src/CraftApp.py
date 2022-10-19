@@ -94,6 +94,21 @@ class CraftApp:
         return result
 
     ################################################################################
+    # Get all sets
+
+    def sets( self ):
+        try:
+            all_data = self.__db.get_all_sets()
+            result = { "success" : 1, "data" : all_data }
+        except CraftException as e:
+            result = { "success" : 0, "errorMsg" : e.msg }
+        except Exception as e:
+            print( "Exception (motifs): ", e )
+            result = { "success" : 0, "errorMsg" : "An unknown exception occurred" }
+
+        return result
+
+    ################################################################################
     # Get all motifs
 
     def motifs( self ):
@@ -152,14 +167,14 @@ class CraftApp:
         return result
 
     ################################################################################
-    # Get items by item type id
+    # Get items by item type id and maybe armor type id
 
-    def items( self, item_type_id = None ):
+    def items( self, item_type_id = None, armor_type_id = None ):
         if ( item_type_id == None ):
             return { "success" : 0, "ErrorMsg" : "No item type specified" }
 
         try:
-            all_data = self.__db.get_items_by_type( item_type_id )
+            all_data = self.__db.get_items_by_type( item_type_id, armor_type_id )
             result = { "success" : 1, "data" : all_data }
         except CraftException as e:
             result = { "success" : 0, "errorMsg" : e.msg }

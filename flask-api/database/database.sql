@@ -1,5 +1,5 @@
--- DROP DATABASE IF EXISTS `crafting_cost_calculator`;
--- CREATE DATABASE 'crafting_cost_calculator';
+DROP DATABASE IF EXISTS `crafting_cost_calculator`;
+CREATE DATABASE `crafting_cost_calculator`;
 
 USE `crafting_cost_calculator`;
 
@@ -176,6 +176,7 @@ INSERT INTO `materials` SET `id` = 170, `name` = "Bone Pyre Ash";
 INSERT INTO `materials` SET `id` = 171, `name` = "Scalloped Frog-Metal";
 INSERT INTO `materials` SET `id` = 172, `name` = "Stendarr Stamp";
 INSERT INTO `materials` SET `id` = 173, `name` = "High Isle Filigree";
+INSERT INTO `materials` SET `id` = 174, `name` = 'None', `price` = 0;
 
 -- -----------------------------------------------------------------------------
 
@@ -213,6 +214,7 @@ CREATE TABLE `item_types` (
 INSERT INTO `item_types` SET `id` = 1, `name` = 'Weapon';
 INSERT INTO `item_types` SET `id` = 2, `name` = 'Armor';
 INSERT INTO `item_types` SET `id` = 3, `name` = 'Jewelry';
+INSERT INTO `item_types` SET `id` = 4, `name` = 'All';
 
 -- -----------------------------------------------------------------------------
 
@@ -256,6 +258,7 @@ INSERT INTO `traits` SET `id` = 24, `name` = 'Infused', `description` = 'Increas
 INSERT INTO `traits` SET `id` = 25, `name` = 'Protective', `description` = 'Increases Physical and Spell Resistance.', `material_id` = 42, `item_type_id` = 3;
 INSERT INTO `traits` SET `id` = 26, `name` = 'Swift', `description` = 'Increases movement speed.', `material_id` = 43, `item_type_id` = 3;
 INSERT INTO `traits` SET `id` = 27, `name` = 'Triune', `description` = 'Increases Maximum Magicka, Stamina, and Health.', `material_id` = 44, `item_type_id` = 3;
+INSERT INTO `traits` SET `id` = 28, `name` = 'None', `description` = '', `material_id` = 174, `item_type_id` = 4;
 
 -- -----------------------------------------------------------------------------
 
@@ -524,6 +527,7 @@ INSERT INTO `sets` SET `id` = 71, `name` = "Way of the Arena";
 INSERT INTO `sets` SET `id` = 72, `name` = "Whitestrake's Retribution"; -- '
 INSERT INTO `sets` SET `id` = 73, `name` = "Willow's Path"; -- '
 INSERT INTO `sets` SET `id` = 74, `name` = "Wretched Vitality";
+INSERT INTO `sets` SET `id` = 75, `name` = "None";
 
 -- -----------------------------------------------------------------------------
 

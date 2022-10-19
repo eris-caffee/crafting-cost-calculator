@@ -14,7 +14,41 @@
   color: #61dafb;
 }
 
-.ItemSelector {
+.Order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}    
+
+.ItemList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ItemRow {
     display: flex;
     flex-direction: row;
+    border-width: 1px;
+    border-top-style: solid;
+    margin-top: 1em;
 }
+
+.Item {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.DeleteItemButton {
+    height: 1.85em;
+    margin-top: 2.35em;
+}
+
+h6 {
+    padding-top: 0em;
+    padding-bottom: 0em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    }

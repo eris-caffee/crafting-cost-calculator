@@ -101,7 +101,7 @@ class CraftDatabase:
             "FROM traits "
             "     INNER JOIN materials ON traits.material_id = materials.id "
             "     INNER JOIN item_types ON traits.item_type_id = item_types.id "
-            "WHERE item_type_id = %(item_type_id)s "
+            "WHERE (item_type_id = %(item_type_id)s) OR ( item_type_id = 4) "
             "ORDER BY traits.name"
         )
         db_cursor.execute( query, { "item_type_id" : item_type_id } )
@@ -195,7 +195,7 @@ class CraftDatabase:
     def get_all_item_types( self ):
         db = self.connect()
         db_cursor = db.cursor( buffered=True )
-        query = ( "SELECT * FROM item_types ORDER BY name" )
+        query = ( "SELECT * FROM item_types WHERE name <> 'All' ORDER BY name " )
         db_cursor.execute( query )
         raw_data = db_cursor.fetchall()
         all_data = []
@@ -230,12 +230,29 @@ class CraftDatabase:
         }
 
     ################################################################################
+    # get all sets
+
+    def get_all_sets( self ):
+        db = self.connect()
+        db_cursor = db.cursor( buffered=True )
+        query = ( "SELECT * FROM sets ORDER BY name" )
+        db_cursor.execute( query )
+        raw_data = db_cursor.fetchall()
+        all_data = []
+        for row in raw_data:
+            all_data.append( { "id" : row[0], "name" : row[1] } )
+        db_cursor.close()
+        db.close()
+        return all_data
+
+
+    ################################################################################
     # get all motifs
 
     def get_all_motifs( self ):
         db = self.connect()
         db_cursor = db.cursor( buffered=True )
-        query = ( "SELECT * FROM sets ORDER BY name" )
+        query = ( "SELECT * FROM motifs ORDER BY name" )
         db_cursor.execute( query )
         raw_data = db_cursor.fetchall()
         all_data = []
@@ -330,7 +347,7 @@ class CraftDatabase:
     ################################################################################
     # get_items_by_type
 
-    def get_items_by_type( self, item_type_id=None ):
+    def get_items_by_type( self, item_type_id=None, armor_type_id=None ):
         if ( item_type_id == None ):
             raise CraftException( "No item type specified" );
         
@@ -358,15 +375,20 @@ class CraftDatabase:
             "     INNER JOIN crafting_types ON items.crafting_type_id = crafting_types.id "
             "WHERE items.item_type_id = %(item_type_id)s"
         )
+        if ( armor_type_id != None ):
+            query = query + " AND armor_type_id = %(armor_type_id)s"
+            db_cursor.execute( query, { "item_type_id" : item_type_id,
+                                        "armor_type_id" : armor_type_id } )
+        else:
+            db_cursor.execute( query, { "item_type_id" : item_type_id } )
 
-        db_cursor.execute( query, { "item_type_id" : item_type_id } )
         raw_data = db_cursor.fetchall()
         all_data = []
         for row in raw_data:
             all_data.append( {
                 "id" : row[0],
-                "num_materials" : row[1],
-                "name" : row[2],
+                "name" : row[1],
+                "num_materials" : row[2],
                 "material_id" : row[3],
                 "material_name" : row[4],
                 "item_type_id" : row[5],
