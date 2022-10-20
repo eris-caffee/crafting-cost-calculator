@@ -1,31 +1,35 @@
 import React from 'react'
-import $ from 'jquery'
 
 import Selector from './Selector'
+
+class ItemData {
+    constructor( {
+        item_type_id = null,
+        armor_type_id = null,
+        set_id = null,
+        motif_id = null,
+        trait_id = null,
+        item_id = null,
+        price = null,
+        showArmorType = false,
+        showMotif = false,
+    } = {} ) {
+        this.item_type_id = item_type_id;
+        this.armor_type_id = armor_type_id;
+        this.set_id = set_id;
+        this.motif_id = motif_id;
+        this.trait_id = trait_id;
+        this.item_id = item_id;
+        this.price = price;
+        this.showArmorType = showArmorType;
+        this.showMotif = showMotif;
+    }
+}
 
 class Item extends React.Component {
 
     constructor( props ) {
         super( props );
-
-        this.state = {
-            showArmorType : true,
-            showMotif : true,
-            
-            item_type_id : -1,
-            armor_type_id : -1,
-            set_id : -1,
-            motif_id : -1,
-            trait_id : -1,
-            item_id : -1,
-            
-            itemTypeData : [],
-            armorTypeData : [],
-            setData : [],
-            motifData : [],
-            traitData : [],
-            itemData : [],
-        };
 
         this.onItemTypeChange = this.onItemTypeChange.bind( this );
         this.onArmorTypeChange = this.onArmorTypeChange.bind( this );
@@ -36,144 +40,87 @@ class Item extends React.Component {
     }
 
     onItemTypeChange( id ) {
-        let newState = { item_type_id : id };
-
-        let entry = this.state.itemTypeData.find(
-            (el) => el.id == id
-        );
-        let extra_url = "";
-        if ( entry.name === "Armor" ) {
-            newState.showArmorType = true;
-            newState.showMotif = true;
-            extra_url = "/" + this.state.armor_type_id;
-        } else if ( entry.name === "Weapon" ) {
-            newState.showArmorType = false;
-            newState.showMotif = true;
-            newState.armor_type_id = -1;
-            newState.trait_id = -1;
-            newState.item_id = -1;
-        } else {
-            newState.showArmorType = false;
-            newState.showMotif = false;
-            newState.armor_type_id = -1;
-            newState.motif_type_id = -1;
-            newState.trait_id = -1;
-            newState.item_id = -1;
-        }
-        
-        this.getData( "trait_id",
-                      "traitData",
-                      "http://localhost:5000/traits/" + id );
-        this.getData( "item_id",
-                      "itemData",
-                      "http://localhost:5000/items/" + id + extra_url );
-        this.setState( newState );
+        let newItemData = this.props.itemData;
+        newItemData.item_type_id = id;
+        this.props.updateItem( this.props.myKey, newItemData );
+        // Because we aren't storing state in this component, React won't know
+        // this needs to be redrawn, so we forceUpdate
+        this.forceUpdate();
     }
     
     onArmorTypeChange( id ) {
-        this.getData( "item_id",
-                      "itemData",
-                      "http://localhost:5000/items/" + this.state.item_type_id + "/" + id );
-        this.setState( { armor_type_id : id } );
+        let newItemData = this.props.itemData;
+        newItemData.armor_type_id = id;
+        this.props.updateItem( this.props.myKey, newItemData );
+        this.forceUpdate();
     }
     
     onSetChange( id ) {
-        this.setState( { set_id : id } );
+        let newItemData = this.props.itemData;
+        newItemData.set_id = id;
+        this.props.updateItem( this.props.myKey, newItemData );
+        this.forceUpdate();
     }
 
     onMotifChange( id ) {
-        this.setState( { motif_id : id } );
+        let newItemData = this.props.itemData;
+        newItemData.motif_id = id;
+        this.props.updateItem( this.props.myKey, newItemData );
+        this.forceUpdate();
     }
 
     onTraitChange( id ) {
-        this.setState( { trait_id : id } );
+        let newItemData = this.props.itemData;
+        newItemData.trait_id = id;
+        this.props.updateItem( this.props.myKey, newItemData );
+        this.forceUpdate();
     }
     
     onItemChange( id ) {
-        this.setState( { item_id : id } );
+        let newItemData = this.props.itemData;
+        newItemData.item_id = id;
+        this.props.updateItem( this.props.myKey, newItemData );
+        this.forceUpdate();
     }
     
-    getData( id_key, data_key, url ) {
-        let me = this;
-        $.ajax({
-            url: url,
-            type: "GET",
-            dataType: "json",
-        })
-            .done( function( json ) {
-                if ( json.success === 1 ) {
-                    let adjData = [];
-                    let entry = json.data.find( (el) => el.name == 'None' );
-                    if (entry) {
-                        let index = json.data.indexOf( entry );
-                        json.data.splice( index, 1 );
-                        adjData = [ entry ];
-                        adjData.push( ...json.data );
-                    }
-                    else {
-                        adjData = json.data;
-                    }
-                    me.state[id_key] = adjData[0].id;
-                    me.state[data_key] = adjData;
-                    me.forceUpdate();
-                }
-                else {
-                    console.log( "Failed to get data: " + json.errorMsg );
-                }
-            })
-            .fail( function ( xhr, status, errorThrown ) {
-                console.log( "Failed to get data: " + status + " " + errorThrown );
-            });
-    }
-
-    
-    componentDidMount() {
-        this.getData( "item_type_id", "itemTypeData", "http://localhost:5000/item_types" );
-        this.getData( "armor_type_id", "armorTypeData", "http://localhost:5000/armor_types" );
-        this.getData( "set_id", "setData", "http://localhost:5000/sets" );
-        this.getData( "motif_id", "motifData", "http://localhost:5000/motifs" );
-        this.getData( "trait_id", "traitData", "http://localhost:5000/traits/2" ); // Armor
-        this.getData( "item_id", "itemData", "http://localhost:5000/items/2/1" ); // Armor, Light
-    }
-
     render() {
         return (
             <div className="Item" >
                 <Selector
                     name="Item Type"
                     onValueChange={this.onItemTypeChange}
-                    data={this.state.itemTypeData}
+                    data={this.props.dbData.itemTypeData}
                 />
-                { this.state.showArmorType &&
+                { this.props.itemData.showArmorType &&
                   <Selector
                       name="Armor Type"
                       onValueChange={this.onArmorTypeChange}
-                      data={this.state.armorTypeData}
+                      data={this.props.dbData.armorTypeData}
                   /> }
                 <Selector
                     name="Item"
                     onValueChange={this.onItemChange}
-                    data={this.state.itemData}
+                    data={this.props.dbData.itemData[this.props.itemData.item_type_id]}
                 />
                 <Selector
                     name="Trait"
                     onValueChange={this.onTraitChange}
-                    data={this.state.traitData}
+                    data={this.props.dbData.traitData[this.props.itemData.item_type_id]}
                 />
                 <Selector
                     name="Set"
                     onValueChange={this.onSetChange}
-                    data={this.state.setData}
+                    data={this.props.dbData.setData}
                 />
-                { this.state.showMotif &&
+                { this.props.itemData.showMotif &&
                   <Selector
                       name="Motif"
                       onValueChange={this.onMotifChange}
-                      data={this.state.motifData}
+                      data={this.props.dbData.motifData}
                   /> }
             </div>
         );
     }
 }
 
-export default Item;
+export { Item, ItemData };

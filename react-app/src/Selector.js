@@ -12,14 +12,17 @@ class Selector extends React.Component {
 
     handleChange( e ) {
         this.setState( { value: e.target.value } );
-        this.props.onValueChange( e.target.value );
+        this.props.onValueChange( parseInt( e.target.value ) );
     }
 
     render() {
-        let selectOptions = this.props.data.map(
-            ( entry ) =>
-            <option value={entry.id} key={entry.id}>{entry.name}</option>
-        );
+        let selectOptions = null;
+        if ( this.props.data != null ) {
+            selectOptions = this.props.data.map(
+                ( entry ) =>
+                <option value={entry.id} key={entry.id}>{entry.name}</option>
+            );
+        }
         return (
             <div>
                 <h6>{this.props.name}</h6>
