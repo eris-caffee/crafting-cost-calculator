@@ -1,38 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { array, func, string } from 'prop-types';
 
-class Selector extends React.Component {
-    constructor( props ) {
-        super( props );
-        this.state = {
-            value : "",
-        };
-
-        this.handleChange = this.handleChange.bind( this );
-    }
-
-    handleChange( e ) {
-        this.setState( { value: e.target.value } );
-        this.props.onValueChange( parseInt( e.target.value ) );
-    }
-
-    render() {
-        let selectOptions = null;
-        if ( this.props.data != null ) {
-            selectOptions = this.props.data.map(
-                ( entry ) =>
-                <option value={entry.id} key={entry.id}>{entry.name}</option>
-            );
-        }
-        return (
-            <div>
-                <h6>{this.props.name}</h6>
-                <select value={this.state.value}
-                        onChange={this.handleChange} >
-                    {selectOptions}
-                </select>
-            </div>
-        );
-    }
+const propTypes = {
+    name: string.isRequired,
+    data: array.isRequired,
+    onValueChange: func.isRequired
 }
 
+const Selector = ({
+    name,
+    data,
+    onValueChange,
+}) => {
+
+    const [value, setValue] = useState(0);
+
+    let selectOptions = null;
+    console.log(data);
+    if (data !== null) {
+        selectOptions = data.map(
+            (entry) =>
+                <option value={entry.id} key={entry.id}>{entry.name}</option>
+        );
+    }
+
+    const handleChange = ( e ) => {
+        setValue(e.target.value);
+        onValueChange(parseInt(e.target.value));
+    }
+
+    return (
+        <div>
+            <h6>{name}</h6>
+            <select value={value}
+                onChange={handleChange} >
+                {selectOptions}
+            </select>
+        </div>
+    );
+};
+
+Selector.propTypes = propTypes;
 export default Selector;

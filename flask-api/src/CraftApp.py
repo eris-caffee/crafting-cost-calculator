@@ -12,7 +12,7 @@ class CraftApp:
     def __init__( self ):
         self.__db = CraftDatabase()
         if ( self.__db == None ):
-            raise CraftError( "Could not open database" )
+            raise CraftException( "Could not open database" )
     
     ################################################################################
     # Get all materials

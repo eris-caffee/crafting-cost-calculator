@@ -1,5 +1,58 @@
-import React from 'react'
+import React from 'react';
+import { arrayOf, bool, func, number, object, shape, } from 'prop-types';
 
+import Item from './Item';
+
+const propTypes = {
+    itemData: arrayOf(shape({
+        key: number.isRequired,
+        item_type_id: number.isRequired,
+        armor_type_id: number.isRequired,
+        set_id: number.isRequired,
+        motif_id: number.isRequired,
+        trait_id: number.isRequired,
+        item_id: number.isRequired,
+        showArmorType: bool.isRequired,
+        showMotif: bool.isRequired,
+    })).isRequired,
+    onNewItemClick: func.isRequired,
+    dbData: object.isRequired,
+};
+
+const ItemList = ({
+    itemData,
+    onNewItemClick,
+    dbData,
+    ...props
+}) => {
+
+    const buildItems = () => {
+        return itemData.map( item => {
+            return (
+                <Item
+                    key={item.key}
+                    item={item}
+                    dbData={dbData}
+                    {...props}
+                />
+            );
+        });
+    };
+
+    const items = buildItems(itemData);
+
+    return (
+        <div className="ItemList">
+            <button onClick={onNewItemClick}>Add New Item</button>
+            {items}
+        </div>
+    );
+};
+
+ItemList.propTypes = propTypes;
+export default ItemList;
+
+/*
 import { Item, ItemData } from './Item'
 
 
@@ -18,36 +71,6 @@ class ItemList extends React.Component {
         this.updateItem = this.updateItem.bind( this );
     }
 
-    addItem() {
-        let key = this.state.nextKey;
-
-        let itemData = new ItemData();
-        itemData.item_type_id = this.props.dbData.itemTypeData[0].id;
-        itemData.armor_type_id = this.props.dbData.armorTypeData[0].id;
-        itemData.set_id = this.props.dbData.setData[0].id;
-        itemData.motif_id = this.props.dbData.motifData[0].id;
-        itemData.trait_id = this.props.dbData.traitData[itemData.item_type_id][0].id;
-        itemData.item_id = this.props.dbData.itemData[itemData.item_type_id][0].id;
-        itemData.showArmorType = this.props.dbData.itemTypeData[0].name === "Armor";
-        itemData.showMotif = this.props.dbData.itemTypeData[0].name !== "Jewelry";
-        
-        let newItem = {
-            key : key,
-            component : ( <Item key = "{key}"
-                                myKey = {key}
-                                itemData = {itemData}
-                                updateItem = {this.updateItem}
-                                dbData = {this.props.dbData}
-                          /> ),
-            data : itemData,
-        };
-        let newList = this.state.itemList;
-        newList.push( newItem );
-        this.setState( {
-            itemList : newList,
-            nextKey : this.state.nextKey + 1,
-        } );
-    }
     
     deleteItem( key ) {
         let item = this.state.itemList.find( e => e.key === key );
@@ -108,3 +131,4 @@ class ItemList extends React.Component {
 }
 
 export default ItemList;
+*/

@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
 class DBData {
-    constructor( dataUpdated ) {
+    constructor() {
         this.itemTypeData = [];
         this.armorTypeData = [];
         this.setData = [];
@@ -9,7 +9,6 @@ class DBData {
         this.traitData = [];
         this.itemData = [];
         this.haveData = false;
-        this.dataUpdated = dataUpdated;
     }
 
     getData( data_key, url, index=null, followUp=null ) {
@@ -37,7 +36,6 @@ class DBData {
                     } else {
                         me[data_key] = adjData;
                     }
-                    me.dataUpdated();
                     
                     if ( followUp != null ) {
                         followUp();

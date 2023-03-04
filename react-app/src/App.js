@@ -1,8 +1,14 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+
 import './App.css';
 import Order from './Order'
 
 function App() {
+
+    useEffect(() => {
+        document.title = 'ESO Crafting Cost Calculator';
+    }, []);
+
     return (
             <div className="App">
             <header className="App-header">
