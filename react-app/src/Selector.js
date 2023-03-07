@@ -16,7 +16,7 @@ const Selector = ({
     const [value, setValue] = useState(0);
 
     let selectOptions = null;
-    console.log(data);
+
     if (data !== null) {
         selectOptions = data.map(
             (entry) =>

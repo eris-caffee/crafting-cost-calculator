@@ -305,17 +305,10 @@ class CraftDatabase:
     ################################################################################
     # get_item
     # Get single item by ID
-    # motif_id optional.  Will assume Breton is not specified
 
-    def get_item( self, item_id=None, motif_id=None ):
+    def get_item( self, item_id=None ):
         if ( item_id == None ):
             raise CraftException( "No item specified" );
-
-        motif = None
-        if ( motif_id == None ):
-            motif = self.get_motif( None, "Breton" )
-        else:
-            motif = self.get_motif( motif_id )
 
         db = self.connect()
         db_cursor = db.cursor( buffered=True )

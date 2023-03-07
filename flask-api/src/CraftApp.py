@@ -188,19 +188,31 @@ class CraftApp:
     # get_item_price
     # Get price for single item
 
-    def get_item_price( self, item_id=None, trait_id=None, motif_id=None ):
+    def get_item_price( self, item_id=None, trait_id=None, motif_id=None, set_id=None ):
         if ( item_id == None ):
             raise CraftException( "No item specified" );
 
-        item = self.__db.get_item( item_id, motif_id )
-        print( item )
+        item = self.__db.get_item( item_id )
         item_material = self.__db.get_material( item["material_id"] )
-        motif_material = self.__db.get_material( item["material_id"] )
-        price = item["num_materials"] * item_material["price"] + motif_material["price"]
+        print( "item material price: ", item_material["price"] )
+        print("num materials: ", item["num_materials"])
+        price = item["num_materials"] * item_material["price"]
+
+        motif_material = None
+        if ( motif_id != None ):
+            motif = self.__db.get_motif( motif_id=motif_id )
+            motif_material = self.__db.get_material( motif["material_id"] )
+        else:
+            motif = self.__db.get_motif( motif_name="Breton" )
+            motif_material = self.__db.get_material( motif["material_id"] )
+
+        print("motif material price: ", motif_material["price"] )
+        price = price  + motif_material["price"]
 
         if ( trait_id != None ):
             trait = self.__db.get_trait( trait_id )
             trait_material = self.__db.get_material( trait["material_id"] )
+            print( "trait material price: ", trait_material["price"] )
             price = price + trait_material["price"]
 
         return price
@@ -209,11 +221,11 @@ class CraftApp:
     # Calculate order total
 
     def order( self, order ):
+        print(" order: ", order)
         if ( order == None ):
             raise CraftException( "No order specified" )
-
         try:
-            order_data = json.loads( order )
+            order_data = order
 
             if ( "items" not in order_data
                 or not isinstance(order_data["items"], list)
@@ -222,11 +234,21 @@ class CraftApp:
 
             order_data["total"] = 0
             for item in order_data["items"] :
-                item_id = item["item"];
+                item_id = item["item_id"];
+
                 trait_id = None
-                if ( "trait" in item ):
-                    trait_id = item["trait"]
-                price = self.get_item_price( item_id, trait_id )
+                if ( "trait_id" in item ):
+                    trait_id = item["trait_id"]
+                
+                motif_id = None
+                if ( "motif_id" in item ):
+                    motif_id = item["motif_id"]
+                
+                set_id = None
+                if ( "set_id" in item ):
+                    set_id = item["set_id"]
+                
+                price = self.get_item_price( item_id, trait_id, motif_id, set_id )
                 item["price"] = price
                 order_data["total"] += price
             

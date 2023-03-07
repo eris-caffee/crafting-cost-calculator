@@ -16,22 +16,32 @@ const propTypes = {
         showMotif: bool.isRequired,
     })).isRequired,
     onNewItemClick: func.isRequired,
+    onItemChange: func.isRequired,
+    onItemDelete: func.isRequired,
     dbData: object.isRequired,
 };
 
 const ItemList = ({
     itemData,
     onNewItemClick,
+    onItemChange,
+    onItemDelete,
     dbData,
     ...props
 }) => {
+
+    const handleItemDataChange = (key, field, id) => {
+        onItemChange(key, field, id);
+    };
 
     const buildItems = () => {
         return itemData.map( item => {
             return (
                 <Item
                     key={item.key}
-                    item={item}
+                    itemData={item}
+                    onItemDataChange={handleItemDataChange}
+                    onItemDelete={onItemDelete}
                     dbData={dbData}
                     {...props}
                 />

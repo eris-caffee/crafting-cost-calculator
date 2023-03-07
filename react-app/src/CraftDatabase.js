@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-class DBData {
+class CraftDatabase {
     constructor() {
         this.itemTypeData = [];
         this.armorTypeData = [];
@@ -9,6 +9,30 @@ class DBData {
         this.traitData = [];
         this.itemData = [];
         this.haveData = false;
+    }
+
+    submitOrder(order, onSuccess) {
+        let order_result;
+        $.ajax({
+            url: 'http://localhost:5000/order',
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify(order),
+            contentType: "application/json; charset=utf-8",
+        })
+            .done(function (json) {
+                console.log("json ", json);
+                if (json.success === 1) {
+                    order_result = json.data;
+                    onSuccess(order_result);
+                }
+                else {
+                    console.log( "Failed to submit order: " + json.errorMsg );
+                }
+            })
+            .fail(function (xhr, status, errorThrown) {
+                console.log("Failed to submit order: " + status + " " + errorThrown);
+            });
     }
 
     getData( data_key, url, index=null, followUp=null ) {
@@ -73,4 +97,4 @@ class DBData {
     }
 }
 
-export default DBData;
+export default CraftDatabase;

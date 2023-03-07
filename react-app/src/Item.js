@@ -1,10 +1,10 @@
 import React from 'react'
-import { bool, number, object, shape } from 'prop-types';
+import { bool, func, number, object, shape } from 'prop-types';
 
 import Selector from './Selector';
 
 const propTypes = {
-    item: shape({
+    itemData: shape({
         key: number.isRequired,
         item_type_id: number.isRequired,
         armor_type_id: number.isRequired,
@@ -15,67 +15,81 @@ const propTypes = {
         showArmorType: bool.isRequired,
         showMotif: bool.isRequired,
     }).isRequired,
+    onItemDataChange: func.isRequired,
+    onItemDelete: func.isRequired,
     dbData: object.isRequired,
 }
 
 const Item = ({
-    item,
+    itemData,
+    onItemDataChange,
+    onItemDelete,
     dbData,
     ...props
 }) => {
 
-    const onItemTypeChange = (id) => {
+    const handleItemTypeChange = (id) => {
+        onItemDataChange(itemData.key, 'item_type_id', id);
     };
 
-    const onArmorTypeChange = (id) => {
+    const handleArmorTypeChange = (id) => {
+        onItemDataChange(itemData.key, 'armor_type_id', id);
     };
 
-    const onSetChange= (id) => {
+    const handleSetChange= (id) => {
+        onItemDataChange(itemData.key, 'set_id', id);
     };
 
-    const onMotifChange = ( id ) => {
+    const handleMotifChange = ( id ) => {
+        onItemDataChange(itemData.key, 'motif_id', id);
     };
 
-    const onTraitChange = ( id ) => {
+    const handleTraitChange = ( id ) => {
+        onItemDataChange(itemData.key, 'trait_id', id);
     };
 
-    const onItemChange = (id) => {
+    const handleItemChange = (id) => {
+        onItemDataChange(itemData.key, 'item_id', id);
     };
 
     return (
         <div className="Item" >
             <Selector
                 name="Item Type"
-                onValueChange={onItemTypeChange}
+                onValueChange={handleItemTypeChange}
                 data={dbData.itemTypeData}
             />
-            {item.showArmorType &&
+            {itemData.showArmorType &&
                 <Selector
                     name="Armor Type"
-                    onValueChange={onArmorTypeChange}
+                    onValueChange={handleArmorTypeChange}
                     data={dbData.armorTypeData}
                 />}
             <Selector
                 name="Item"
-                onValueChange={onItemChange}
-                data={dbData.itemData[item.item_type_id]}
+                onValueChange={handleItemChange}
+                data={dbData.itemData[itemData.item_type_id]}
             />
             <Selector
                 name="Trait"
-                onValueChange={onTraitChange}
-                data={dbData.traitData[item.item_type_id]}
+                onValueChange={handleTraitChange}
+                data={dbData.traitData[itemData.item_type_id]}
             />
             <Selector
                 name="Set"
-                onValueChange={onSetChange}
+                onValueChange={handleSetChange}
                 data={dbData.setData}
             />
-            {item.showMotif &&
+            {itemData.showMotif &&
                 <Selector
                     name="Motif"
-                    onValueChange={onMotifChange}
+                    onValueChange={handleMotifChange}
                     data={dbData.motifData}
                 />}
+            <div>
+                <h6>&nbsp;</h6>
+                <button onClick={() => onItemDelete(itemData.key)}>Delete</button>
+            </div>
         </div>
     );
 };

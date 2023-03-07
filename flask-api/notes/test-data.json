@@ -1,12 +1,1 @@
-{
-    "items":[
-        {"item":30,"trait":10,"motif_id":1},
-        {"item":31,"trait":11}
-    ]
-}
-
-
-
-{
-    "items":1
-}
+{"items":[{"item_id":30,"trait_id":10,"motif_id":1},{"item_id":31,"trait_id":11}]}

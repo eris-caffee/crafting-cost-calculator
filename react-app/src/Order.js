@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 //import { string } from 'prop-types';
-import DBData from './DBData';
+import CraftDatabase from './CraftDatabase';
 
 import ItemList from './ItemList';
+import OrderResult from './OrderResult';
+
 const propTypes = {
 };
 
@@ -12,29 +14,30 @@ const Order = ({
 }) => {
 
     const getDbData = () => {
-        let dbData = new DBData();
+        let dbData = new CraftDatabase();
         dbData.getAllData();
         return dbData;
     };
 
     const id = uuidv4();
-    const [dbData] = useState(getDbData);
+    const [db] = useState(getDbData());
     const [itemData, setItemData] = useState([]);
     const [nextItemKey, setNextItemKey] = useState(1);
+    const [orderResult, setOrderResult] = useState({ items: [], total: 0 });
 
 
     const handleAddNewItem = () => {
 
         let newItem = {
             key: nextItemKey,
-            item_type_id: dbData.itemTypeData[0].id,
-            armor_type_id: dbData.armorTypeData[0].id,
-            set_id: dbData.setData[0].id,
-            motif_id: dbData.motifData[0].id,
-            trait_id: dbData.traitData[dbData.itemTypeData[0].id][0].id,
-            item_id: dbData.itemData[dbData.itemTypeData[0].id][0].id,
-            showArmorType: dbData.itemTypeData[0].name === "Armor",
-            showMotif: dbData.itemTypeData[0].name !== "Jewelry",
+            item_type_id: db.itemTypeData[0].id,
+            armor_type_id: db.armorTypeData[0].id,
+            set_id: db.setData[0].id,
+            motif_id: db.motifData[0].id,
+            trait_id: db.traitData[db.itemTypeData[0].id][0].id,
+            item_id: db.itemData[db.itemTypeData[0].id][0].id,
+            showArmorType: db.itemTypeData[0].name === "Armor",
+            showMotif: db.itemTypeData[0].name !== "Jewelry",
         };
 
         let newItems = itemData;
@@ -43,11 +46,65 @@ const Order = ({
         setNextItemKey(nextItemKey + 1);
     };
 
+    const handleItemChange = (key, field, id) => {
+        const newItems = itemData.map((item) => {
+            if (item.key === key) {
+                console.log("found item with key: " + key);
+                item[field] = id;
+                console.log("item ", item);
+                const type_data = db.itemTypeData.find((type) => type.id === item.item_type_id);
+                item.showArmorType = type_data.name === "Armor";
+                item.showMotif = type_data.name !== "Jewelry";
+            }
+            return item;
+        });
+        setItemData(newItems);
+    };
+
+    const handleItemDelete = (key) => {
+        setItemData(itemData.filter(item => item.key!== key));
+    };
+
+    const handleOrderSubmitSuccess = (order_result) => {
+        console.log("order result ",order_result);
+        if (order_result !== undefined) {
+            setOrderResult(order_result);
+        }
+    };
+
+    const submitOrder = () => {
+        let order = {
+            items: itemData.map((item) => {
+                return {
+                    item_id: item.item_id,
+                    item_type_id: item.item_type_id,
+                    trait_id: item.trait_id,
+                    motif_id: item.motif_id,
+                    set_id: item.set_id,
+                }
+             }),
+        }
+        db.submitOrder(order, handleOrderSubmitSuccess);
+    };
+
     return (
-        <div className="Order" id={id}>
-            <h2>Your Order</h2>
-            <ItemList itemData={itemData} dbData={dbData} onNewItemClick={handleAddNewItem} />
-        </div>
+        <>
+            <div className="Order" id={id}>
+                <h2>Your Order</h2>
+                <button onClick={submitOrder}>Submit Order</button>
+                <ItemList
+                    itemData={itemData}
+                    dbData={db}
+                    onNewItemClick={handleAddNewItem}
+                    onItemChange={handleItemChange}
+                    onItemDelete={handleItemDelete}
+                />
+            </div>
+            <div className="OrderResult">
+                <h2>Prices</h2>
+                <OrderResult dbData={db} orderData={orderResult} />
+            </div>
+        </>
     );
 };
 

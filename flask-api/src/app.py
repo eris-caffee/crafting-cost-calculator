@@ -64,4 +64,4 @@ def items( item_type_id = None, armor_type_id = None ):
 # calculate order total
 @flaskApp.route( "/order", methods = [ "POST" ] )
 def order():
-    return craftApp.order( request.form["order"] )
+    return craftApp.order( request.json )
