@@ -103,6 +103,7 @@ const Order = ({
                     onItemDelete={handleItemDelete}
                 />
             </div>
+            <hr />
             <div className="OrderResult">
                 <h2>Prices</h2>
                 <OrderResult dbData={db} orderData={orderResult} />
