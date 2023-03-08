@@ -49,12 +49,15 @@ const Order = ({
     const handleItemChange = (key, field, id) => {
         const newItems = itemData.map((item) => {
             if (item.key === key) {
-                console.log("found item with key: " + key);
                 item[field] = id;
-                console.log("item ", item);
                 const type_data = db.itemTypeData.find((type) => type.id === item.item_type_id);
                 item.showArmorType = type_data.name === "Armor";
                 item.showMotif = type_data.name !== "Jewelry";
+
+                if (field === 'item_type_id') {
+                    item.item_id = db.itemData[type_data.id][0].id;
+                    item.trait_id = db.traitData[type_data.id][0].id;
+                }
             }
             return item;
         });
