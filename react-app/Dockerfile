@@ -19,6 +19,7 @@ RUN chown crafter.crafter /home/crafter/app
 COPY --chown=crafter:crafter package.json start-server.sh /home/crafter/app/
 COPY --chown=crafter:crafter public /home/crafter/app/public/
 COPY --chown=crafter:crafter src /home/crafter/app/src/
+RUN chmod 755 /home/crafter/app/start-server.sh
 
 EXPOSE 3000
 USER crafter

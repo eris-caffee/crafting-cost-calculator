@@ -17,6 +17,7 @@ RUN mkdir /home/crafter/app
 RUN chown crafter.crafter /home/crafter/app
 COPY --chown=crafter:crafter config.ini ttc-update* start-server.sh /home/crafter/app/
 COPY --chown=crafter:crafter src /home/crafter/app/src/
+RUN chmod 755 /home/crafter/app/start-server.sh
 
 ENV FLASK_APP=app.py
 EXPOSE 5000
