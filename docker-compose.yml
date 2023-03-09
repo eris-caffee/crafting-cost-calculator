@@ -25,5 +25,9 @@ services:
       db:
          condition: service_healthy
 
+  react-app:
+    image: crafting-cost-calulator/react-app
+    build: ./react-app
+
 volumes:
   db-data:
