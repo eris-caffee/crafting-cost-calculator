@@ -1,0 +1,10 @@
+version: "3.1"
+
+services:
+  flask-api:
+    volumes:
+      - /home/eris/dev/crafting-cost-calculator/flask-api:/home/crafter/app
+    ports:
+     - "5000:5000"
+    environment:
+      FLASK_DEBUG: 1

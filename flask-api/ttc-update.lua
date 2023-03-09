@@ -57,7 +57,7 @@ conf = inifile.parse( 'config.ini' )
 mysql = require "luasql.mysql"
 
 db_env = assert( mysql.mysql() )
-db = assert( db_env:connect( conf['Database']['Database'], conf['Database']['User'], conf['Database']['Password'] ) )
+db = assert( db_env:connect( conf['Database']['Database'], conf['Database']['User'], conf['Database']['Password'], conf['Database']['Host'], conf['Database']['Port'] ) )
 
 db_cursor = assert( db:execute( "SELECT name FROM materials ORDER BY name" ) )
 i = 1

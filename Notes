@@ -1,0 +1,25 @@
+Need docker.io
+
+base image ubuntu
+wget
+unzip
+
+
+python3
+flask
+flask-cors
+json
+mysql.connector
+configparser
+
+lua
+luarocks
+inifile
+luasql-mysql
+
+node
+nvm
+yarn
+React
+
+jquery

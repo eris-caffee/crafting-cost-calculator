@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: crafting_cost_caluclator
+      MARIADB_USER: crafter
+      MARIADB_PASSWORD: crafter
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/healthcheck.sh", "--connect"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+
+  flask-api:
+    image: crafting-cost-calulator/flask-api
+    build: ./flask-api
+    depends_on:
+      db:
+         condition: service_healthy
+
+volumes:
+  db-data:
