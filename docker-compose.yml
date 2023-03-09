@@ -19,14 +19,14 @@ services:
       retries: 3
 
   flask-api:
-    image: crafting-cost-calulator/flask-api
+    image: crafting-cost-calculator/flask-api
     build: ./flask-api
     depends_on:
       db:
         condition: service_healthy
 
   react-app:
-    image: crafting-cost-calulator/react-app
+    image: crafting-cost-calculator/react-app
     build: ./react-app
     
 volumes:
