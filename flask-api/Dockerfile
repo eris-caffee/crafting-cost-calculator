@@ -21,4 +21,4 @@ RUN chmod 755 /home/crafter/app/start-server.sh
 
 ENV FLASK_APP=app.py
 EXPOSE 5000
-CMD sh /home/crafter/app/start-server.sh
+CMD /home/crafter/app/start-server.sh

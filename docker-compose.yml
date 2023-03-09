@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: example
-      MARIADB_DATABASE: crafting_cost_caluclator
+      MARIADB_DATABASE: crafting_cost_calculator
       MARIADB_USER: crafter
       MARIADB_PASSWORD: crafter
     volumes:
@@ -21,6 +21,10 @@ services:
   flask-api:
     image: crafting-cost-calculator/flask-api
     build: ./flask-api
+    ports:
+      - "5000:5000"
+    volumes:
+      - flask-api-data:/home/crafter/app
     depends_on:
       db:
         condition: service_healthy
@@ -28,6 +32,12 @@ services:
   react-app:
     image: crafting-cost-calculator/react-app
     build: ./react-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - react-app-data:/home/crafter/app
     
 volumes:
   db-data:
+  flask-api-data:
+  react-app-data:

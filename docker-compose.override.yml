@@ -4,16 +4,12 @@ services:
   flask-api:
     volumes:
       - /home/eris/dev/crafting-cost-calculator/flask-api:/home/crafter/app
-    ports:
-     - "5000:5000"
     environment:
       FLASK_DEBUG: 1
 
   react-app:
     volumes:
       - /home/eris/dev/crafting-cost-calculator/react-app:/home/crafter/app
-    ports:
-      - "3000:3000"
       
     environment:
       DEBUG: 1
