@@ -9,4 +9,6 @@ wget https://us.tamrieltradecentre.com/download/PriceTable
 
 yes A | unzip PriceTable
 
+BASEDIR=$(dirname "$0")
+cd "$BASEDIR"
 lua ttc-update.lua
