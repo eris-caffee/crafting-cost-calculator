@@ -14,30 +14,36 @@ services:
       - db-data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "/usr/local/bin/healthcheck.sh", "--connect"]
-      interval: 1m
+      interval: 15s
       timeout: 10s
       retries: 3
 
   flask-api:
     image: crafting-cost-calculator/flask-api
     build: ./flask-api
+    restart: always
     ports:
       - "5000:5000"
-    volumes:
-      - flask-api-data:/home/crafter/app
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:5000/item_types"]
+      interval: 15s
+      timeout: 10s
+      retries: 3
 
   react-app:
     image: crafting-cost-calculator/react-app
     build: ./react-app
+    restart: always
     ports:
       - "3000:3000"
-    volumes:
-      - react-app-data:/home/crafter/app
+    depends_on:
+      flask-api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:3000"]
     
 volumes:
   db-data:
-  flask-api-data:
-  react-app-data:

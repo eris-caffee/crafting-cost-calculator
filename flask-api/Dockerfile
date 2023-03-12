@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get install -y python3 python3-pip
 RUN apt-get install -y lua5.4 lua-inifile lua-sql-mysql
 RUN apt-get install -y mariadb-client libmariadb-dev
-RUN apt-get install -y unzip wget
+RUN apt-get install -y unzip wget curl
 RUN apt-get install -y less emacs
 RUN apt-get install -y cron
 

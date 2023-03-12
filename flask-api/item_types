@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "name": "Armor"
+    },
+    {
+      "id": 3,
+      "name": "Jewelry"
+    },
+    {
+      "id": 1,
+      "name": "Weapon"
+    }
+  ],
+  "success": 1
+}
