@@ -15,12 +15,13 @@ const Order = ({
 
     const getDbData = () => {
         let dbData = new CraftDatabase();
+        console.log("fetching db data");
         dbData.getAllData();
         return dbData;
     };
 
     const id = uuidv4();
-    const [db] = useState(getDbData());
+    const [db] = useState(getDbData);
     const [itemData, setItemData] = useState([]);
     const [nextItemKey, setNextItemKey] = useState(1);
     const [orderResult, setOrderResult] = useState({ items: [], total: 0 });
@@ -33,7 +34,7 @@ const Order = ({
             item_type_id: db.itemTypeData[0].id,
             armor_type_id: db.armorTypeData[0].id,
             set_id: db.setData[0].id,
-            motif_id: db.motifData[0].id,
+            motif_id: db.motifData.filter( item => item.name === "Breton")[0].id,
             trait_id: db.traitData[db.itemTypeData[0].id][0].id,
             item_id: db.itemData[db.itemTypeData[0].id][0].id,
             showArmorType: db.itemTypeData[0].name === "Armor",
@@ -45,7 +46,7 @@ const Order = ({
         setItemData(newItems);
         setNextItemKey(nextItemKey + 1);
     };
-
+    console.log(db.motifData.filter(item => item.name === "Breton"));
     const handleItemChange = (key, field, id) => {
         const newItems = itemData.map((item) => {
             if (item.key === key) {

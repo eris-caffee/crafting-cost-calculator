@@ -84,7 +84,8 @@ const Item = ({
                 <Selector
                     name="Motif"
                     onValueChange={handleMotifChange}
-                    data={dbData.motifData}
+                data={dbData.motifData}
+                initialValue={itemData.motif_id}
                 />}
             <div>
                 <h6>&nbsp;</h6>

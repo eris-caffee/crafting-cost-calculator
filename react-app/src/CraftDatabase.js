@@ -9,12 +9,13 @@ class CraftDatabase {
         this.traitData = [];
         this.itemData = [];
         this.haveData = false;
+        this.flask_url = 'http://localhost:5000';
     }
 
     submitOrder(order, onSuccess) {
         let order_result;
         $.ajax({
-            url: 'http://eldalin.com:5000/order',
+            url: this.flask_url+'/order',
             type: "POST",
             dataType: "json",
             data: JSON.stringify(order),
@@ -77,20 +78,20 @@ class CraftDatabase {
     getDataByArmorType() {
         for ( let index in this.itemTypeData ) {
             let type = this.itemTypeData[index];
-            this.getData( "traitData", "http://eldalin.com:5000/traits/" + type.id,
+            this.getData( "traitData", this.flask_url+'/traits/' + type.id,
                           type.id );
-            this.getData( "itemData", "http://eldalin.com:5000/items/" + type.id,
+            this.getData( "itemData", this.flask_url+'/items/' + type.id,
                           type.id );
         }
     }
     
     getAllData() {
         if ( ! this.haveData ) {
-            this.getData( "itemTypeData", "http://eldalin.com:5000/item_types" );
-            this.getData( "armorTypeData", "http://eldalin.com:5000/armor_types",
+            this.getData( "itemTypeData", this.flask_url+'/item_types' );
+            this.getData( "armorTypeData", this.flask_url+'/armor_types',
                           null, this.getDataByArmorType.bind( this ) );
-            this.getData( "setData", "http://eldalin.com:5000/sets" );
-            this.getData( "motifData", "http://eldalin.com:5000/motifs" );
+            this.getData( "setData", this.flask_url+'/sets' );
+            this.getData( "motifData", this.flask_url+'/motifs' );
             this.haveData = true;
         }
         

@@ -1,25 +1,11 @@
-Need docker.io
+TODO
 
-base image ubuntu
-wget
-unzip
+- add support for quality
+- add Material UI styling
+- add support for all levels
 
+DONE
 
-python3
-flask
-flask-cors
-json
-mysql.connector
-configparser
+* - set default motif to Breton
+* - remove hardcoded flask-api url from CraftDatabase [ note: it's not the flask api.  It's the website url. ]
 
-lua
-luarocks
-inifile
-luasql-mysql
-
-node
-nvm
-yarn
-React
-
-jquery

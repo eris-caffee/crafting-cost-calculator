@@ -6,7 +6,7 @@ from CraftApp import *
 ################################################################################
 
 flaskApp = Flask(__name__)
-CORS( flaskApp, origins=["http://eldalin.com:5000"] )
+CORS( flaskApp, origins=["http://localhost:3000", "http://eldalin.com:3000"] )
 
 craftApp = CraftApp()
 

@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
-import { array, func, string } from 'prop-types';
+import { array, func, number, string } from 'prop-types';
 
 const propTypes = {
     name: string.isRequired,
     data: array.isRequired,
-    onValueChange: func.isRequired
+    onValueChange: func.isRequired,
+    initialValue: number,
 }
 
 const Selector = ({
     name,
     data,
     onValueChange,
+    initialValue,
 }) => {
 
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(initialValue || 0);
 
     let selectOptions = null;
 
