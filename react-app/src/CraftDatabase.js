@@ -9,7 +9,7 @@ class CraftDatabase {
         this.traitData = [];
         this.itemData = [];
         this.haveData = false;
-        this.flask_url = 'http://localhost:5000';
+        this.flask_url = 'http://db:5000';
     }
 
     submitOrder(order, onSuccess) {

@@ -15,7 +15,7 @@ RUN pip install --user flask flask-cors mysql.connector
 RUN echo "1 0 * * * /home/crafter/app/ttc-update.sh" | crontab -
 RUN mkdir /home/crafter/app
 RUN chown crafter.crafter /home/crafter/app
-COPY --chown=crafter:crafter config.ini ttc-update* start-server.sh /home/crafter/app/
+COPY --chown=crafter:crafter config.ini ttc-update* start-server.sh database/database.sql /home/crafter/app/
 COPY --chown=crafter:crafter src /home/crafter/app/src/
 RUN chmod 755 /home/crafter/app/start-server.sh
 
